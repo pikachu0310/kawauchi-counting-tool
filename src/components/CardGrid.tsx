@@ -71,6 +71,23 @@ export const CardGrid = ({ cards, groups, instanceState, onToggle }: CardGridPro
 
   return (
     <section className={styles.section}>
+      <header className={styles.sectionHeader}>
+        <div>
+          <p className={styles.sectionEyebrow}>カードトラッカー</p>
+          <h2>今回のデッキ構成</h2>
+          <p>カードをタップすると「山札に残す / 引いた」を即座に切り替えられます。</p>
+        </div>
+        <div className={styles.legend}>
+          <span className={styles.legendItem}>
+            <span className={styles.legendDot} aria-hidden="true" />
+            山札に残す
+          </span>
+          <span className={styles.legendItem} data-variant="inactive">
+            <span className={styles.legendDot} aria-hidden="true" />
+            引いた / 使用済み
+          </span>
+        </div>
+      </header>
       <div className={styles.groupStack}>
         {groups.map((group) => {
           const groupCards = cardsByGroup[group.id] ?? [];

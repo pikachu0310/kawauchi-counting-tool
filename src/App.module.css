@@ -2,6 +2,25 @@
   min-height: 100vh;
   background: radial-gradient(circle at top left, #1e1b4b, #020617 65%);
   color: #f8fafc;
+  position: relative;
+  overflow: hidden;
+}
+
+.app::before,
+.app::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.app::before {
+  background: radial-gradient(circle at 15% 20%, rgba(59, 130, 246, 0.25), transparent 55%);
+}
+
+.app::after {
+  background: radial-gradient(circle at 80% 0%, rgba(249, 115, 22, 0.18), transparent 45%);
+  mix-blend-mode: screen;
 }
 
 .main {
@@ -10,18 +29,21 @@
   padding: 2.5rem clamp(1.25rem, 4vw, 3rem) 3rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.7rem;
+  position: relative;
+  z-index: 1;
 }
 
 .header {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: 1rem;
-  align-items: center;
-  background: rgba(15, 23, 42, 0.55);
-  border: 1px solid rgba(148, 163, 184, 0.2);
-  border-radius: 16px;
-  padding: 1.1rem clamp(1rem, 4vw, 2rem);
+  gap: 1.4rem;
+  align-items: stretch;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 24px;
+  padding: 1.35rem clamp(1rem, 4vw, 2.3rem);
+  box-shadow: 0 30px 70px rgba(2, 6, 23, 0.55);
 }
 
 .heroIntro {
@@ -36,14 +58,14 @@
   flex-wrap: wrap;
   align-items: baseline;
   gap: 0.55rem;
-  padding-bottom: 0.2rem;
-  border-bottom: 2px solid rgba(56, 189, 248, 0.35);
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid rgba(56, 189, 248, 0.4);
   text-shadow: 0 8px 18px rgba(2, 6, 23, 0.75);
 }
 
 .heroTitleMain,
 .heroTitleAccent {
-  font-size: clamp(1.95rem, 4.5vw, 2.7rem);
+  font-size: clamp(1.95rem, 4.5vw, 2.8rem);
   font-weight: 800;
   margin: 0;
   letter-spacing: 0.02em;
@@ -54,14 +76,14 @@
 }
 
 .heroTitleAccent {
-  color: #f8fafc;
+  color: #fcd34d;
 }
 
 .heroDescription {
   margin: 0;
-  font-size: 0.95rem;
-  color: #cbd5f5;
-  line-height: 1.55;
+  font-size: 0.98rem;
+  color: #d7def9;
+  line-height: 1.6;
 }
 
 .heroGameLink {
@@ -69,6 +91,7 @@
   text-decoration: none;
   border-bottom: 1px dashed rgba(56, 189, 248, 0.6);
   padding-bottom: 0.05rem;
+  transition: color 0.2s ease, border-color 0.2s ease;
 }
 
 .heroGameLink:hover {
@@ -80,8 +103,13 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 0.25rem;
+  gap: 0.35rem;
   text-align: right;
+  background: rgba(2, 6, 23, 0.55);
+  border-radius: 18px;
+  padding: 1.1rem;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .heroMetaLabel {
@@ -106,33 +134,36 @@
 .heroButton,
 .heroGhostButton {
   border-radius: 999px;
-  padding: 0.3rem 0.85rem;
-  font-size: 0.78rem;
+  padding: 0.35rem 0.95rem;
+  font-size: 0.82rem;
   text-decoration: none;
   font-weight: 600;
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .heroButton {
-  background: rgba(56, 189, 248, 0.15);
+  background: linear-gradient(120deg, rgba(56, 189, 248, 0.35), rgba(45, 212, 191, 0.4));
   color: #e0f2fe;
   border: 1px solid rgba(56, 189, 248, 0.5);
+  box-shadow: 0 12px 22px -12px rgba(56, 189, 248, 0.8);
 }
 
 .heroGhostButton {
-  border: 1px solid rgba(148, 163, 184, 0.5);
+  border: 1px solid rgba(148, 163, 184, 0.6);
   color: #cbd5f5;
+  background: rgba(15, 23, 42, 0.6);
 }
 
 .heroButton:hover,
 .heroGhostButton:hover {
   background: rgba(148, 163, 184, 0.2);
+  transform: translateY(-1px);
 }
 
 .layout {
   display: grid;
-  grid-template-columns: minmax(0, 2.8fr) minmax(240px, 0.7fr);
-  gap: 1.1rem;
+  grid-template-columns: minmax(0, 2.8fr) minmax(260px, 0.75fr);
+  gap: 1.2rem;
   align-items: flex-start;
 }
 
@@ -145,7 +176,7 @@
 .panelStack {
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
+  gap: 0.95rem;
   max-width: 420px;
   width: 100%;
   margin-left: auto;
@@ -159,16 +190,18 @@
 }
 
 .footerExtra section {
-  background: rgba(15, 23, 42, 0.75);
-  border-radius: 14px;
-  padding: 0.9rem;
-  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: rgba(15, 23, 42, 0.82);
+  border-radius: 18px;
+  padding: 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  box-shadow: 0 12px 35px rgba(2, 6, 23, 0.55);
 }
 
 .footerExtra h3 {
-  margin: 0 0 0.4rem;
-  font-size: 0.95rem;
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
   color: #e2e8f0;
+  letter-spacing: 0.03em;
 }
 
 .footerExpectationGrid {
@@ -178,21 +211,22 @@
 }
 
 .footerExpectationItem {
-  background: rgba(30, 41, 59, 0.8);
+  background: rgba(30, 41, 59, 0.85);
   border-radius: 12px;
-  padding: 0.6rem;
-  border: 1px solid rgba(148, 163, 184, 0.2);
+  padding: 0.7rem;
+  border: 1px solid rgba(148, 163, 184, 0.25);
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .footerExpectationItem span {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
 }
 
 .footerExpectationItem strong {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
 .footerSpecialGrid {
@@ -203,12 +237,13 @@
 
 .footerSpecialGrid div {
   background: rgba(30, 41, 59, 0.85);
-  border-radius: 10px;
-  padding: 0.5rem 0.7rem;
-  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 12px;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid rgba(148, 163, 184, 0.25);
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .footerSpecialLabel {
@@ -236,27 +271,48 @@
 
 .notes {
   margin-top: 0.6rem;
-  background: rgba(15, 23, 42, 0.7);
-  border-radius: 14px;
-  border: 1px solid rgba(148, 163, 184, 0.2);
-  padding: 0.9rem 1rem;
+  background: rgba(15, 23, 42, 0.78);
+  border-radius: 20px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  padding: 1rem 1.2rem;
   color: #cbd5f5;
+  box-shadow: 0 15px 40px rgba(2, 6, 23, 0.5);
 }
 
 .notes h3 {
-  margin: 0 0 0.4rem;
-  font-size: 0.95rem;
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
   color: #e2e8f0;
+  letter-spacing: 0.03em;
 }
 
 .notes ul {
   margin: 0;
-  padding-left: 1.2rem;
+  padding-left: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
-  font-size: 0.85rem;
+  gap: 0.45rem;
+  font-size: 0.88rem;
   color: #cbd5f5;
+  list-style: none;
+}
+
+.notes li {
+  position: relative;
+  padding-left: 1.4rem;
+  line-height: 1.5;
+}
+
+.notes li::before {
+  content: "";
+  position: absolute;
+  width: 0.35rem;
+  height: 0.35rem;
+  background: #38bdf8;
+  border-radius: 50%;
+  left: 0;
+  top: 0.5rem;
+  box-shadow: 0 0 0 6px rgba(56, 189, 248, 0.15);
 }
 
 @media (max-width: 1024px) {
