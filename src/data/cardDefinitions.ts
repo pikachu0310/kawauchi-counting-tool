@@ -161,7 +161,7 @@ export const cardDefinitions: CardDefinition[] = [
     imagePath: "/cards/big_find.png",
     groupId: "item_discovery",
     color: "#fde047",
-    shortDescription: "アイテム+1（大）",
+    shortDescription: "アイテム1枚獲得　　　　(2枚見る)",
   },
   {
     id: "buried_treasure",
@@ -172,7 +172,7 @@ export const cardDefinitions: CardDefinition[] = [
     imagePath: "/cards/buried_treasure.png",
     groupId: "item_discovery",
     color: "#d97706",
-    shortDescription: "アイテム+1 / 捨て札回収",
+    shortDescription: "アイテム1枚獲得　　　　(シャッフル)",
   },
   {
     id: "fruit_hunt",

@@ -33,7 +33,7 @@ export const StatsPanel = ({ stats }: StatsPanelProps) => {
         <h2>期待値 &amp; 確率</h2>
         <div className={styles.remaining}>
           <span>残り</span>
-          <strong>{stats.totalCards}</strong>
+          <span>{stats.totalCards}</span>
           <span>枚</span>
         </div>
       </div>
@@ -41,7 +41,7 @@ export const StatsPanel = ({ stats }: StatsPanelProps) => {
         <p className={styles.warning}>デッキが空です。季節の変わり目でリセットしてください。</p>
       )}
       <div className={styles.statGroup}>
-        <h3>資源が x 枚以上得られる確率（カード単体）</h3>
+        <h4>1探検で資源がx枚以上得られる確率</h4>
         <div className={styles.tableWrap}>
           <table>
             <thead>

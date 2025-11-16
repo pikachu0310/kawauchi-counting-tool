@@ -59,16 +59,16 @@
 
 .resetButton {
   border: none;
-  border-radius: 10px;
-  padding: 0.55rem;
-  background: rgba(59, 130, 246, 0.2);
-  color: #bfdbfe;
+  border-radius: 999px;
+  padding: 0.65rem 1rem;
+  background: linear-gradient(120deg, #f97316, #f43f5e);
+  color: #fff;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 12px 24px -10px rgba(249, 115, 22, 0.7);
 }
 
 .resetButton:hover {
-  background: rgba(59, 130, 246, 0.3);
   transform: translateY(-1px);
 }

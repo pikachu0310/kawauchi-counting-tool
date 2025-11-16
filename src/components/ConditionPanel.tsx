@@ -66,7 +66,7 @@ export const ConditionPanel = ({ conditions, onChange, onReset }: ConditionPanel
         </div>
       </div>
       <button type="button" className={styles.resetButton} onClick={onReset}>
-        季節の変わり目（カウンティングリセット）
+        季節の変わり目 (リセット)
       </button>
     </section>
   );
