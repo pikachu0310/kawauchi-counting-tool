@@ -69,6 +69,8 @@ export type CardDefinition = {
   isGoAgain?: boolean;
   imagePath: string;
   groupId: CardGroupId;
+  color: string;
+  shortDescription: string;
 };
 
 export type ConditionsState = {

@@ -57,7 +57,7 @@ export const App = () => {
             <p className={styles.tag}>React + TypeScript / CSS Modules</p>
             <h1>カードカウンティングツール</h1>
             <p className={styles.lead}>
-              山札の残り構成を追跡し、次の1枚で得られる資源期待値や各種確率をリアルタイム表示します。各カード画像を点灯/消灯させて残り枚数を管理してください。
+              山札の残り構成を追跡し、次の1枚で得られる資源期待値や各種確率をリアルタイム表示します。色付きカードボタンを点灯/消灯させて残り枚数を管理してください。
             </p>
           </div>
           <div className={styles.summaryRow}>
@@ -84,7 +84,7 @@ export const App = () => {
         </div>
         <footer className={styles.footer}>
           <p>
-            画像はプレースホルダー表示です。1 枚 1 枚をクリックして ON（明るい）/OFF（暗い）を切り替え、引いたカードを即座に反映させてください。
+            1 枚ごとに色分けしたボタンをクリックして ON（明るい）/OFF（暗い）を切り替えれば、引いたカードを即座に反映できます。
             条件チェックボックスは「季節の変わり目」のリセットでは保持されます。
           </p>
           <div className={styles.footerLinks}>

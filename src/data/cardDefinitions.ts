@@ -63,6 +63,8 @@ export const cardDefinitions: CardDefinition[] = [
     baseGain: resource(2, 0, 0),
     imagePath: "/cards/gather_fruit2.png",
     groupId: "general_gather",
+    color: "#fb923c",
+    shortDescription: "果物+2",
   },
   {
     id: "gather_meat2",
@@ -71,6 +73,8 @@ export const cardDefinitions: CardDefinition[] = [
     baseGain: resource(0, 2, 0),
     imagePath: "/cards/gather_meat2.png",
     groupId: "general_gather",
+    color: "#f87171",
+    shortDescription: "お肉+2",
   },
   {
     id: "gather_fish2",
@@ -79,6 +83,8 @@ export const cardDefinitions: CardDefinition[] = [
     baseGain: resource(0, 0, 2),
     imagePath: "/cards/gather_fish2.png",
     groupId: "general_gather",
+    color: "#38bdf8",
+    shortDescription: "魚+2",
   },
   {
     id: "gather_fruit_meat",
@@ -87,6 +93,8 @@ export const cardDefinitions: CardDefinition[] = [
     baseGain: resource(1, 1, 0),
     imagePath: "/cards/gather_fruit_meat.png",
     groupId: "general_gather",
+    color: "#fbbf24",
+    shortDescription: "果物+1 / お肉+1",
   },
   {
     id: "gather_fruit_fish",
@@ -95,6 +103,8 @@ export const cardDefinitions: CardDefinition[] = [
     baseGain: resource(1, 0, 1),
     imagePath: "/cards/gather_fruit_fish.png",
     groupId: "general_gather",
+    color: "#34d399",
+    shortDescription: "果物+1 / 魚+1",
   },
   {
     id: "gather_meat_fish",
@@ -103,6 +113,8 @@ export const cardDefinitions: CardDefinition[] = [
     baseGain: resource(0, 1, 1),
     imagePath: "/cards/gather_meat_fish.png",
     groupId: "general_gather",
+    color: "#c084fc",
+    shortDescription: "お肉+1 / 魚+1",
   },
   {
     id: "overhunt_fruit2",
@@ -111,6 +123,8 @@ export const cardDefinitions: CardDefinition[] = [
     baseGain: resource(2, 0, 0),
     imagePath: "/cards/overhunt_fruit2.png",
     groupId: "general_overhunt",
+    color: "#ea580c",
+    shortDescription: "果物+2（乱獲）",
   },
   {
     id: "overhunt_meat2",
@@ -119,6 +133,8 @@ export const cardDefinitions: CardDefinition[] = [
     baseGain: resource(0, 2, 0),
     imagePath: "/cards/overhunt_meat2.png",
     groupId: "general_overhunt",
+    color: "#e11d48",
+    shortDescription: "お肉+2（乱獲）",
   },
   {
     id: "overhunt_fish2",
@@ -127,6 +143,8 @@ export const cardDefinitions: CardDefinition[] = [
     baseGain: resource(0, 0, 2),
     imagePath: "/cards/overhunt_fish2.png",
     groupId: "general_overhunt",
+    color: "#2563eb",
+    shortDescription: "魚+2（乱獲）",
   },
   {
     id: "find_item",
@@ -136,6 +154,8 @@ export const cardDefinitions: CardDefinition[] = [
     isItemCard: true,
     imagePath: "/cards/find_item.png",
     groupId: "item_discovery",
+    color: "#facc15",
+    shortDescription: "アイテム1枚獲得",
   },
   {
     id: "big_find",
@@ -145,6 +165,8 @@ export const cardDefinitions: CardDefinition[] = [
     isItemCard: true,
     imagePath: "/cards/big_find.png",
     groupId: "item_discovery",
+    color: "#fde047",
+    shortDescription: "アイテム+1（大）",
   },
   {
     id: "buried_treasure",
@@ -154,6 +176,8 @@ export const cardDefinitions: CardDefinition[] = [
     isItemCard: true,
     imagePath: "/cards/buried_treasure.png",
     groupId: "item_discovery",
+    color: "#d97706",
+    shortDescription: "アイテム+1 / 捨て札回収",
   },
   {
     id: "fruit_hunt",
@@ -162,6 +186,8 @@ export const cardDefinitions: CardDefinition[] = [
     baseGain: resource(3, 0, 0),
     imagePath: "/cards/fruit_hunt.png",
     groupId: "mono_resource",
+    color: "#f97316",
+    shortDescription: "果物+3",
   },
   {
     id: "barbecue",
@@ -170,6 +196,8 @@ export const cardDefinitions: CardDefinition[] = [
     baseGain: resource(0, 3, 0),
     imagePath: "/cards/barbecue.png",
     groupId: "mono_resource",
+    color: "#fb7185",
+    shortDescription: "お肉+3",
   },
   {
     id: "big_catch",
@@ -178,6 +206,8 @@ export const cardDefinitions: CardDefinition[] = [
     baseGain: resource(0, 0, 3),
     imagePath: "/cards/big_catch.png",
     groupId: "mono_resource",
+    color: "#0ea5e9",
+    shortDescription: "魚+3",
   },
   {
     id: "rescued_fish",
@@ -192,6 +222,8 @@ export const cardDefinitions: CardDefinition[] = [
     ],
     imagePath: "/cards/rescued_fish.png",
     groupId: "relief_min_char",
+    color: "#10b981",
+    shortDescription: "果物/肉+1 +最少で魚+1",
   },
   {
     id: "blessing_spring",
@@ -206,6 +238,8 @@ export const cardDefinitions: CardDefinition[] = [
     ],
     imagePath: "/cards/blessing_spring.png",
     groupId: "relief_min_char",
+    color: "#67e8f9",
+    shortDescription: "果物/魚+1 +最少で肉+1",
   },
   {
     id: "basket_with_hole",
@@ -220,6 +254,8 @@ export const cardDefinitions: CardDefinition[] = [
     ],
     imagePath: "/cards/basket_with_hole.png",
     groupId: "relief_min_char",
+    color: "#bef264",
+    shortDescription: "肉/魚+1 +最少で果物+1",
   },
   {
     id: "harvest_help",
@@ -234,6 +270,8 @@ export const cardDefinitions: CardDefinition[] = [
     ],
     imagePath: "/cards/harvest_help.png",
     groupId: "relief_higher_char",
+    color: "#f59e0b",
+    shortDescription: "果物/肉+1 +格差で果物+1",
   },
   {
     id: "animal_care",
@@ -248,6 +286,8 @@ export const cardDefinitions: CardDefinition[] = [
     ],
     imagePath: "/cards/animal_care.png",
     groupId: "relief_higher_char",
+    color: "#f43f5e",
+    shortDescription: "肉/魚+1 +格差で肉+1",
   },
   {
     id: "ocean_current_blessing",
@@ -262,6 +302,8 @@ export const cardDefinitions: CardDefinition[] = [
     ],
     imagePath: "/cards/ocean_current_blessing.png",
     groupId: "relief_higher_char",
+    color: "#3b82f6",
+    shortDescription: "果物/魚+1 +格差で魚+1",
   },
   {
     id: "big_harvest",
@@ -270,6 +312,8 @@ export const cardDefinitions: CardDefinition[] = [
     baseGain: resource(2, 2, 2),
     imagePath: "/cards/big_harvest.png",
     groupId: "power_events",
+    color: "#fdd835",
+    shortDescription: "全資源+2",
   },
   {
     id: "mercy",
@@ -278,6 +322,8 @@ export const cardDefinitions: CardDefinition[] = [
     baseGain: resource(1, 1, 1),
     imagePath: "/cards/mercy.png",
     groupId: "power_events",
+    color: "#c4b5fd",
+    shortDescription: "果物/肉/魚+1",
   },
   {
     id: "scattered_food",
@@ -286,6 +332,8 @@ export const cardDefinitions: CardDefinition[] = [
     baseGain: resource(1, 1, 1),
     imagePath: "/cards/scattered_food.png",
     groupId: "power_events",
+    color: "#4ade80",
+    shortDescription: "果物/肉/魚+1（配布無視）",
   },
   {
     id: "change_shift",
@@ -294,6 +342,8 @@ export const cardDefinitions: CardDefinition[] = [
     baseGain: resource(1, 1, 1),
     imagePath: "/cards/change_shift.png",
     groupId: "power_events",
+    color: "#2dd4bf",
+    shortDescription: "果物/肉/魚+1（交代）",
   },
   {
     id: "begging",
@@ -302,6 +352,8 @@ export const cardDefinitions: CardDefinition[] = [
     baseGain: resource(1, 1, 1),
     imagePath: "/cards/begging.png",
     groupId: "power_events",
+    color: "#f472b6",
+    shortDescription: "果物/肉/魚+1（おねだり）",
   },
   {
     id: "mysterious_spring",
@@ -311,6 +363,8 @@ export const cardDefinitions: CardDefinition[] = [
     extraActionCard: true,
     imagePath: "/cards/mysterious_spring.png",
     groupId: "power_events",
+    color: "#93c5fd",
+    shortDescription: "再行動カード",
   },
   {
     id: "everyone_favorite",
@@ -319,6 +373,8 @@ export const cardDefinitions: CardDefinition[] = [
     baseGain: resource(0, 0, 0),
     imagePath: "/cards/everyone_favorite.png",
     groupId: "power_events",
+    color: "#f9a8d4",
+    shortDescription: "好みの種類×2食料",
   },
   {
     id: "go_again_fruit",
@@ -328,6 +384,8 @@ export const cardDefinitions: CardDefinition[] = [
     isGoAgain: true,
     imagePath: "/cards/go_again_fruit.png",
     groupId: "go_again",
+    color: "#fb6f92",
+    shortDescription: "果物+1 & もう1枚",
   },
   {
     id: "go_again_meat",
@@ -337,6 +395,8 @@ export const cardDefinitions: CardDefinition[] = [
     isGoAgain: true,
     imagePath: "/cards/go_again_meat.png",
     groupId: "go_again",
+    color: "#ef4444",
+    shortDescription: "お肉+1 & もう1枚",
   },
   {
     id: "go_again_fish",
@@ -346,6 +406,8 @@ export const cardDefinitions: CardDefinition[] = [
     isGoAgain: true,
     imagePath: "/cards/go_again_fish.png",
     groupId: "go_again",
+    color: "#22d3ee",
+    shortDescription: "魚+1 & もう1枚",
   },
   {
     id: "season_change",
@@ -354,6 +416,8 @@ export const cardDefinitions: CardDefinition[] = [
     baseGain: resource(0, 0, 0),
     imagePath: "/cards/season_change.png",
     groupId: "reset",
+    color: "#94a3b8",
+    shortDescription: "カウンティングを初期化",
   },
 ];
 

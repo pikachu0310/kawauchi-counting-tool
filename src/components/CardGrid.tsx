@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 
 import { createInstanceId } from "../data/cardDefinitions";
 import type {
@@ -17,54 +17,26 @@ type CardGridProps = {
   onToggle: (instanceId: CardInstanceId) => void;
 };
 
-type CardImageProps = {
-  path: string;
-  name: string;
-};
-
-const CardImage = ({ path, name }: CardImageProps) => {
-  const [hasError, setHasError] = useState(false);
-
-  if (hasError) {
-    return (
-      <div className={styles.imagePlaceholder} aria-label={`${name}（画像未設定）`}>
-        <span className={styles.imagePlaceholderLabel}>画像未設定</span>
-        <span className={styles.imagePlaceholderPath}>{path}</span>
-      </div>
-    );
-  }
-
-  return (
-    <img
-      className={styles.image}
-      src={path}
-      alt={`${name}のカード`}
-      onError={() => setHasError(true)}
-      draggable={false}
-    />
-  );
-};
-
-const CardInstanceButton = ({
-  cardName,
-  imagePath,
-  isActive,
-  onToggle,
-}: {
-  cardName: string;
-  imagePath: string;
+type CardInstanceTileProps = {
+  card: CardDefinition;
   isActive: boolean;
   onToggle: () => void;
-}) => (
-  <button
-    type="button"
-    className={`${styles.instanceButton} ${isActive ? styles.instanceActive : styles.instanceInactive}`}
-    onClick={onToggle}
-    aria-pressed={isActive}
-    aria-label={`${cardName} / ${isActive ? "山札に残す" : "引き済み"}`}
-  >
-    <CardImage path={imagePath} name={cardName} />
-  </button>
+};
+
+const CardInstanceTile = ({ card, isActive, onToggle }: CardInstanceTileProps) => (
+  <div className={styles.instanceTile}>
+    <button
+      type="button"
+      className={`${styles.instanceButton} ${isActive ? styles.instanceActive : styles.instanceInactive}`}
+      style={{ backgroundColor: card.color }}
+      onClick={onToggle}
+      aria-pressed={isActive}
+      aria-label={`${card.name} / ${isActive ? "山札に残す" : "引き済み"}`}
+    >
+      <span className={styles.visuallyHidden}>{card.name}</span>
+    </button>
+    <p className={styles.instanceCaption}>{card.shortDescription}</p>
+  </div>
 );
 
 export const CardGrid = ({ cards, groups, instanceState, onToggle }: CardGridProps) => {
@@ -80,7 +52,7 @@ export const CardGrid = ({ cards, groups, instanceState, onToggle }: CardGridPro
     <section className={styles.section}>
       <div className={styles.sectionHeader}>
         <h2>カード ON / OFF</h2>
-        <p>各シリーズごとに 1 枚ずつトグルできます。明るい = 山札に残り / 暗い = 引き済み。</p>
+        <p>色付きボタンをクリックして ON（明）/OFF（暗）を切り替えてください。</p>
       </div>
       <div className={styles.groupStack}>
         {groups.map((group) => {
@@ -101,10 +73,9 @@ export const CardGrid = ({ cards, groups, instanceState, onToggle }: CardGridPro
                     const instanceId = createInstanceId(card.id, index);
                     const isActive = instanceState[instanceId];
                     return (
-                      <CardInstanceButton
+                      <CardInstanceTile
                         key={instanceId}
-                        cardName={card.name}
-                        imagePath={card.imagePath}
+                        card={card}
                         isActive={isActive}
                         onToggle={() => onToggle(instanceId)}
                       />
