@@ -11,7 +11,7 @@
 .panelHeader {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   gap: 1rem;
 }
 
@@ -20,9 +20,17 @@
   font-size: 1.2rem;
 }
 
-.panelHeader p {
-  margin: 0;
+.remaining {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
   color: #94a3b8;
+  font-size: 0.95rem;
+}
+
+.remaining strong {
+  font-size: 2.1rem;
+  color: #facc15;
 }
 
 .warning {

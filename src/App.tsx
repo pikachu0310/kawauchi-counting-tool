@@ -77,16 +77,11 @@ export const App = () => {
             onToggle={handleToggleInstance}
           />
           <div className={styles.panelStack}>
-            <section className={styles.summaryCard}>
-              <div>
-                <p className={styles.summaryLabel}>デッキ残り枚数</p>
-                <strong className={styles.summaryValue}>{stats.totalCards}</strong>
-              </div>
-              <button type="button" className={styles.summaryButton} onClick={handleResetDeck}>
-                季節の変わり目（リセット）
-              </button>
-            </section>
-            <ConditionPanel conditions={conditions} onChange={handleConditionChange} />
+            <ConditionPanel
+              conditions={conditions}
+              onChange={handleConditionChange}
+              onReset={handleResetDeck}
+            />
             <StatsPanel stats={stats} />
           </div>
         </div>

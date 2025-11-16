@@ -4,6 +4,7 @@ import styles from "./ConditionPanel.module.css";
 type ConditionPanelProps = {
   conditions: ConditionsState;
   onChange: (update: Partial<ConditionsState>) => void;
+  onReset: () => void;
 };
 
 const favoriteLabels: Record<ResourceType, string> = {
@@ -12,7 +13,7 @@ const favoriteLabels: Record<ResourceType, string> = {
   fish: "お魚",
 };
 
-export const ConditionPanel = ({ conditions, onChange }: ConditionPanelProps) => {
+export const ConditionPanel = ({ conditions, onChange, onReset }: ConditionPanelProps) => {
   const handleCheckbox = (
     key: keyof Omit<ConditionsState, "favoriteSelection">,
   ) => {
@@ -64,6 +65,9 @@ export const ConditionPanel = ({ conditions, onChange }: ConditionPanelProps) =>
           ))}
         </div>
       </div>
+      <button type="button" className={styles.resetButton} onClick={onReset}>
+        季節の変わり目（カウンティングリセット）
+      </button>
     </section>
   );
 };
