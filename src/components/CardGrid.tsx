@@ -24,11 +24,11 @@ type CardInstanceTileProps = {
 };
 
 const resourceColorMap: { keyword: string; color: string }[] = [
-  { keyword: "果物", color: "#22c55e" },
-  { keyword: "お肉", color: "#ef4444" },
-  { keyword: "肉", color: "#ef4444" },
-  { keyword: "お魚", color: "#3b82f6" },
-  { keyword: "魚", color: "#3b82f6" },
+  { keyword: "果物", color: "#166534" },
+  { keyword: "お肉", color: "#991b1b" },
+  { keyword: "肉", color: "#991b1b" },
+  { keyword: "お魚", color: "#1d4ed8" },
+  { keyword: "魚", color: "#1d4ed8" },
 ];
 
 const highlightResourceText = (text: string) => {

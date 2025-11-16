@@ -30,11 +30,11 @@ export const cardGroups: CardGroup[] = [
   },
   {
     id: "relief_min_char",
-    title: "救済シリーズ：最少キャラ条件",
+    title: "救済シリーズ: 最少キャラ条件",
   },
   {
     id: "relief_higher_char",
-    title: "救済シリーズ：格差条件",
+    title: "救済シリーズ: 格差条件",
   },
   {
     id: "power_events",
@@ -53,7 +53,7 @@ export const cardGroups: CardGroup[] = [
 export const cardDefinitions: CardDefinition[] = [
   {
     id: "gather_fruit2",
-    name: "採集：果物果物",
+    name: "採集: 果物果物",
     count: 2,
     baseGain: resource(2, 0, 0),
     imagePath: "/cards/gather_fruit2.png",
@@ -63,7 +63,7 @@ export const cardDefinitions: CardDefinition[] = [
   },
   {
     id: "gather_meat2",
-    name: "採集：お肉お肉",
+    name: "採集: お肉お肉",
     count: 2,
     baseGain: resource(0, 2, 0),
     imagePath: "/cards/gather_meat2.png",
@@ -73,7 +73,7 @@ export const cardDefinitions: CardDefinition[] = [
   },
   {
     id: "gather_fish2",
-    name: "採集：魚魚",
+    name: "採集: お魚お魚",
     count: 2,
     baseGain: resource(0, 0, 2),
     imagePath: "/cards/gather_fish2.png",
@@ -83,7 +83,7 @@ export const cardDefinitions: CardDefinition[] = [
   },
   {
     id: "gather_fruit_meat",
-    name: "採集：果物肉",
+    name: "採集: 果物お肉",
     count: 3,
     baseGain: resource(1, 1, 0),
     imagePath: "/cards/gather_fruit_meat.png",
@@ -93,7 +93,7 @@ export const cardDefinitions: CardDefinition[] = [
   },
   {
     id: "gather_fruit_fish",
-    name: "採集：果物魚",
+    name: "採集: 果物お魚",
     count: 3,
     baseGain: resource(1, 0, 1),
     imagePath: "/cards/gather_fruit_fish.png",
@@ -103,7 +103,7 @@ export const cardDefinitions: CardDefinition[] = [
   },
   {
     id: "gather_meat_fish",
-    name: "採集：肉魚",
+    name: "採集: お肉お魚",
     count: 3,
     baseGain: resource(0, 1, 1),
     imagePath: "/cards/gather_meat_fish.png",
@@ -113,7 +113,7 @@ export const cardDefinitions: CardDefinition[] = [
   },
   {
     id: "overhunt_fruit2",
-    name: "乱獲：果物果物",
+    name: "乱獲: 果物果物",
     count: 1,
     baseGain: resource(2, 0, 0),
     imagePath: "/cards/overhunt_fruit2.png",
@@ -123,7 +123,7 @@ export const cardDefinitions: CardDefinition[] = [
   },
   {
     id: "overhunt_meat2",
-    name: "乱獲：お肉お肉",
+    name: "乱獲: お肉お肉",
     count: 1,
     baseGain: resource(0, 2, 0),
     imagePath: "/cards/overhunt_meat2.png",
@@ -133,7 +133,7 @@ export const cardDefinitions: CardDefinition[] = [
   },
   {
     id: "overhunt_fish2",
-    name: "乱獲：魚魚",
+    name: "乱獲: お魚お魚",
     count: 1,
     baseGain: resource(0, 0, 2),
     imagePath: "/cards/overhunt_fish2.png",
@@ -206,7 +206,7 @@ export const cardDefinitions: CardDefinition[] = [
   },
   {
     id: "rescued_fish",
-    name: "取り逃した魚",
+    name: "取り逃したお魚",
     count: 1,
     baseGain: resource(1, 1, 0),
     conditionalGain: [
@@ -395,7 +395,7 @@ export const cardDefinitions: CardDefinition[] = [
   },
   {
     id: "go_again_fish",
-    name: "いってきまーす！（魚）",
+    name: "いってきまーす！（お魚）",
     count: 1,
     baseGain: resource(0, 0, 1),
     isGoAgain: true,
