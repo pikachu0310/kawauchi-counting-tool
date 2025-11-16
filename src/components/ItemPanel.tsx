@@ -36,53 +36,26 @@ const ItemTile = ({
 );
 
 export const ItemPanel = ({ itemState, onToggle }: ItemPanelProps) => {
-  const { tiles, activeCount } = useMemo(() => {
-    const mapped = itemDefinitions.flatMap((item) =>
+  const tiles = useMemo(() => {
+    return itemDefinitions.flatMap((item) =>
       Array.from({ length: item.count }).map((_, index) => {
         const instanceId = `${item.id}__${index}` as ItemInstanceId;
-        const active = itemState[instanceId];
         return {
           instanceId,
           item,
-          active,
+          active: itemState[instanceId],
         };
       }),
     );
-
-    const remaining = mapped.filter((tile) => tile.active).length;
-    return {
-      tiles: mapped,
-      activeCount: remaining,
-    };
   }, [itemState]);
-
-  const totalCount = tiles.length;
 
   return (
     <section className={styles.panel}>
-      <header className={styles.panelHeader}>
-        <div>
-          <p className={styles.panelEyebrow}>アイテムトラッカー</p>
-          <h2>アイテム管理</h2>
-          <p className={styles.panelDescription}>
-            引いた・使用したアイテムをタップして状態を切り替え、期待値を常に最新に保ちます。
-          </p>
-        </div>
-        <div className={styles.panelStats}>
-          <div className={styles.panelStat}>
-            <span>山札</span>
-            <strong>{activeCount}</strong>
-          </div>
-          <div className={styles.panelStat}>
-            <span>使用済</span>
-            <strong>{totalCount - activeCount}</strong>
-          </div>
-        </div>
-      </header>
       <div className={styles.grid}>
         {tiles.map(({ instanceId, item, active }) => (
           <ItemTile
             key={instanceId}
+            id={instanceId}
             name={item.name}
             description={item.description}
             color={item.color}
