@@ -5,7 +5,7 @@
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
 .panelHeader {
@@ -17,7 +17,8 @@
 
 .panelHeader h2 {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  letter-spacing: 0.03em;
 }
 
 .remaining {
@@ -25,7 +26,7 @@
   align-items: baseline;
   gap: 0.35rem;
   color: #94a3b8;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
 }
 
 .warning {
@@ -35,18 +36,6 @@
   background: rgba(248, 113, 113, 0.15);
   color: #fecaca;
   border: 1px solid rgba(248, 113, 113, 0.4);
-}
-
-.statGroup h3 {
-  margin: 0 0 0.35rem;
-  font-size: 1rem;
-  color: #f8fafc;
-}
-
-.statGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
 }
 
 .expectationGrid {
@@ -108,6 +97,7 @@
   overflow-x: auto;
   border-radius: 12px;
   border: 1px solid rgba(148, 163, 184, 0.2);
+  margin-top: -0.2rem;
 }
 
 table {
@@ -130,4 +120,24 @@ th {
 td {
   border-top: 1px solid rgba(148, 163, 184, 0.2);
   color: #f8fafc;
+}
+
+.extraInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.extraInfo section {
+  background: rgba(30, 41, 59, 0.72);
+  border-radius: 14px;
+  padding: 0.9rem;
+  border: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+.extraInfo h3 {
+  margin: 0 0 0.4rem;
+  font-size: 0.95rem;
+  color: #e2e8f0;
 }

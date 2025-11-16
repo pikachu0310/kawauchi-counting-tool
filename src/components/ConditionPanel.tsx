@@ -5,6 +5,7 @@ type ConditionPanelProps = {
   conditions: ConditionsState;
   onChange: (update: Partial<ConditionsState>) => void;
   onReset: () => void;
+  remainingCards: number;
 };
 
 const favoriteLabels: Record<ResourceType, string> = {
@@ -13,7 +14,12 @@ const favoriteLabels: Record<ResourceType, string> = {
   fish: "お魚",
 };
 
-export const ConditionPanel = ({ conditions, onChange, onReset }: ConditionPanelProps) => {
+export const ConditionPanel = ({
+  conditions,
+  onChange,
+  onReset,
+  remainingCards,
+}: ConditionPanelProps) => {
   const handleCheckbox = (
     key: keyof Omit<ConditionsState, "favoriteSelection">,
   ) => {
@@ -65,9 +71,15 @@ export const ConditionPanel = ({ conditions, onChange, onReset }: ConditionPanel
           ))}
         </div>
       </div>
-      <button type="button" className={styles.resetButton} onClick={onReset}>
-        季節の変わり目 (リセット)
-      </button>
+      <div className={styles.summaryRow}>
+        <div className={styles.remaining}>
+          <p>カード残り枚数</p>
+          <strong>{remainingCards}</strong>
+        </div>
+        <button type="button" className={styles.resetButton} onClick={onReset}>
+          季節の変わり目 (リセット)
+        </button>
+      </div>
     </section>
   );
 };

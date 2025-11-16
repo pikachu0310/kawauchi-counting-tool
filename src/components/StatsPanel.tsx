@@ -30,7 +30,7 @@ export const StatsPanel = ({ stats }: StatsPanelProps) => {
   return (
     <section className={styles.panel}>
       <div className={styles.panelHeader}>
-        <h2>期待値 &amp; 確率</h2>
+        <h2>1探検で資源がx枚以上得られる確率</h2>
         <div className={styles.remaining}>
           <span>残り</span>
           <span>{stats.totalCards}</span>
@@ -40,71 +40,70 @@ export const StatsPanel = ({ stats }: StatsPanelProps) => {
       {isDeckEmpty && (
         <p className={styles.warning}>デッキが空です。季節の変わり目でリセットしてください。</p>
       )}
-      <div className={styles.statGroup}>
-        <h4>1探検で資源がx枚以上得られる確率</h4>
-        <div className={styles.tableWrap}>
-          <table>
-            <thead>
-              <tr>
-                <th>資源</th>
-                {thresholds.map((threshold) => (
-                  <th key={threshold.key}>{threshold.label}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {(Object.entries(resourceLabels) as [keyof typeof resourceLabels, string][]).map(
-                ([key, label]) => (
-                  <tr key={key}>
-                    <td style={{ color: resourceColors[key] }}>{label}</td>
-                    {thresholds.map((threshold) => (
-                      <td key={threshold.key}>
-                        {formatPercentage(stats.resourceAtLeast[key][threshold.key])}
-                      </td>
-                    ))}
-                  </tr>
-                ),
-              )}
-            </tbody>
-          </table>
-        </div>
+      <div className={styles.tableWrap}>
+        <table>
+          <thead>
+            <tr>
+              <th>資源</th>
+              {thresholds.map((threshold) => (
+                <th key={threshold.key}>{threshold.label}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {(Object.entries(resourceLabels) as [keyof typeof resourceLabels, string][]).map(
+              ([key, label]) => (
+                <tr key={key}>
+                  <td style={{ color: resourceColors[key] }}>{label}</td>
+                  {thresholds.map((threshold) => (
+                    <td key={threshold.key}>
+                      {formatPercentage(stats.resourceAtLeast[key][threshold.key])}
+                    </td>
+                  ))}
+                </tr>
+              ),
+            )}
+          </tbody>
+        </table>
       </div>
-      <div className={styles.statGroup}>
-        <h3>次の 1 枚で獲得できる期待値</h3>
-        <div className={styles.expectationGrid}>
-          {(Object.entries(resourceLabels) as [keyof typeof resourceLabels, string][]).map(
-            ([key, label]) => {
-              const color = resourceColors[key];
-              return (
-                <div key={key} className={styles.expectationItem}>
-                  <span style={{ color }}>{label}</span>
-                  <strong style={{ color }}>
-                    {formatResourceValue(stats.expectationFinal[key])}
-                  </strong>
-                </div>
-              );
-            },
-          )}
-        </div>
-      </div>
-      <div className={styles.statGroup}>
-        <h3>特殊カードの確率</h3>
-        <div className={styles.specialGrid}>
-          <div>
-            <p className={styles.specialLabel}>アイテムカード</p>
-            <strong>
-              {stats.itemCount} 枚 / {stats.totalCards} 枚
-            </strong>
-            <span>{formatPercentage(stats.itemProbability)}</span>
+      <div className={styles.extraInfo}>
+        <section>
+          <h3>次の 1 枚で獲得できる期待値</h3>
+          <div className={styles.expectationGrid}>
+            {(Object.entries(resourceLabels) as [keyof typeof resourceLabels, string][]).map(
+              ([key, label]) => {
+                const color = resourceColors[key];
+                return (
+                  <div key={key} className={styles.expectationItem}>
+                    <span style={{ color }}>{label}</span>
+                    <strong style={{ color }}>
+                      {formatResourceValue(stats.expectationFinal[key])}
+                    </strong>
+                  </div>
+                );
+              },
+            )}
           </div>
-          <div>
-            <p className={styles.specialLabel}>不思議な湧き水</p>
-            <strong>
-              {stats.extraActionCount} 枚 / {stats.totalCards} 枚
-            </strong>
-            <span>{formatPercentage(stats.extraActionProbability)}</span>
+        </section>
+        <section>
+          <h3>特殊カードの確率</h3>
+          <div className={styles.specialGrid}>
+            <div>
+              <p className={styles.specialLabel}>アイテムカード</p>
+              <strong>
+                {stats.itemCount} 枚 / {stats.totalCards} 枚
+              </strong>
+              <span>{formatPercentage(stats.itemProbability)}</span>
+            </div>
+            <div>
+              <p className={styles.specialLabel}>不思議な湧き水</p>
+              <strong>
+                {stats.extraActionCount} 枚 / {stats.totalCards} 枚
+              </strong>
+              <span>{formatPercentage(stats.extraActionProbability)}</span>
+            </div>
           </div>
-        </div>
+        </section>
       </div>
     </section>
   );

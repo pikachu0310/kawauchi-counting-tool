@@ -81,6 +81,7 @@ export const App = () => {
               conditions={conditions}
               onChange={handleConditionChange}
               onReset={handleResetDeck}
+              remainingCards={stats.totalCards}
             />
             <StatsPanel stats={stats} />
           </div>
