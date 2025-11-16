@@ -23,6 +23,29 @@ type CardInstanceTileProps = {
   onToggle: () => void;
 };
 
+const resourceColorMap: { keyword: string; color: string }[] = [
+  { keyword: "果物", color: "#22c55e" },
+  { keyword: "お肉", color: "#ef4444" },
+  { keyword: "肉", color: "#ef4444" },
+  { keyword: "お魚", color: "#3b82f6" },
+  { keyword: "魚", color: "#3b82f6" },
+];
+
+const highlightResourceText = (text: string) => {
+  const tokens = text.split(/(果物|お肉|肉|お魚|魚)/g);
+  return tokens.map((token, index) => {
+    const match = resourceColorMap.find((entry) => entry.keyword === token);
+    if (match) {
+      return (
+        <span key={`${token}-${index}`} style={{ color: match.color }}>
+          {token}
+        </span>
+      );
+    }
+    return <span key={`${token}-${index}`}>{token}</span>;
+  });
+};
+
 const CardInstanceTile = ({ card, isActive, onToggle }: CardInstanceTileProps) => (
   <button
     type="button"
@@ -32,8 +55,8 @@ const CardInstanceTile = ({ card, isActive, onToggle }: CardInstanceTileProps) =
     aria-pressed={isActive}
     aria-label={`${card.name} / ${isActive ? "山札に残す" : "引き済み"}`}
   >
-    <span className={styles.buttonLabel}>{card.name}</span>
-    <span className={styles.buttonDesc}>{card.shortDescription}</span>
+    <span className={styles.buttonLabel}>{highlightResourceText(card.name)}</span>
+    <span className={styles.buttonDesc}>{highlightResourceText(card.shortDescription)}</span>
   </button>
 );
 

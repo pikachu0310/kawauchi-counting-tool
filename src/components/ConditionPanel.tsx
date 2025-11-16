@@ -9,7 +9,7 @@ type ConditionPanelProps = {
 const favoriteLabels: Record<ResourceType, string> = {
   fruit: "果物",
   meat: "お肉",
-  fish: "魚",
+  fish: "お魚",
 };
 
 export const ConditionPanel = ({ conditions, onChange }: ConditionPanelProps) => {
@@ -64,9 +64,6 @@ export const ConditionPanel = ({ conditions, onChange }: ConditionPanelProps) =>
           ))}
         </div>
       </div>
-      <p className={styles.hint}>
-        ※ 条件は「季節の変わり目」リセット後も維持されます。好みの食材も必要に応じて更新してください。
-      </p>
     </section>
   );
 };

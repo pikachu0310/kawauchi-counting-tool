@@ -38,12 +38,12 @@ export const cardGroups: CardGroup[] = [
     title: "救済シリーズ：最少キャラ条件",
   },
   {
-    id: "relief_higher_char",
-    title: "救済シリーズ：格差条件",
-  },
-  {
     id: "power_events",
     title: "強力イベント",
+  },
+  {
+    id: "relief_higher_char",
+    title: "救済シリーズ：格差条件",
   },
   {
     id: "go_again",
@@ -80,7 +80,7 @@ export const cardDefinitions: CardDefinition[] = [
     imagePath: "/cards/gather_fish2.png",
     groupId: "general_gather",
     color: "#38bdf8",
-    shortDescription: "魚+2",
+    shortDescription: "お魚+2",
   },
   {
     id: "gather_fruit_meat",
@@ -100,7 +100,7 @@ export const cardDefinitions: CardDefinition[] = [
     imagePath: "/cards/gather_fruit_fish.png",
     groupId: "general_gather",
     color: "#34d399",
-    shortDescription: "果物+1 / 魚+1",
+    shortDescription: "果物+1 / お魚+1",
   },
   {
     id: "gather_meat_fish",
@@ -110,7 +110,7 @@ export const cardDefinitions: CardDefinition[] = [
     imagePath: "/cards/gather_meat_fish.png",
     groupId: "general_gather",
     color: "#c084fc",
-    shortDescription: "お肉+1 / 魚+1",
+    shortDescription: "お肉+1 / お魚+1",
   },
   {
     id: "overhunt_fruit2",
@@ -140,7 +140,7 @@ export const cardDefinitions: CardDefinition[] = [
     imagePath: "/cards/overhunt_fish2.png",
     groupId: "general_overhunt",
     color: "#2563eb",
-    shortDescription: "魚+2（乱獲）",
+    shortDescription: "お魚+2（乱獲）",
   },
   {
     id: "find_item",
@@ -203,7 +203,7 @@ export const cardDefinitions: CardDefinition[] = [
     imagePath: "/cards/big_catch.png",
     groupId: "mono_resource",
     color: "#0ea5e9",
-    shortDescription: "魚+3",
+    shortDescription: "お魚+3",
   },
   {
     id: "rescued_fish",
@@ -219,7 +219,7 @@ export const cardDefinitions: CardDefinition[] = [
     imagePath: "/cards/rescued_fish.png",
     groupId: "relief_min_char",
     color: "#10b981",
-    shortDescription: "果物/肉+1 +最少で魚+1",
+    shortDescription: "果物/お肉+1 +最少でお魚+1",
   },
   {
     id: "blessing_spring",
@@ -235,7 +235,7 @@ export const cardDefinitions: CardDefinition[] = [
     imagePath: "/cards/blessing_spring.png",
     groupId: "relief_min_char",
     color: "#67e8f9",
-    shortDescription: "果物/魚+1 +最少で肉+1",
+    shortDescription: "果物/お魚+1 +最少でお肉+1",
   },
   {
     id: "basket_with_hole",
@@ -251,7 +251,7 @@ export const cardDefinitions: CardDefinition[] = [
     imagePath: "/cards/basket_with_hole.png",
     groupId: "relief_min_char",
     color: "#bef264",
-    shortDescription: "肉/魚+1 +最少で果物+1",
+    shortDescription: "お肉/お魚+1 +最少で果物+1",
   },
   {
     id: "harvest_help",
@@ -267,7 +267,7 @@ export const cardDefinitions: CardDefinition[] = [
     imagePath: "/cards/harvest_help.png",
     groupId: "relief_higher_char",
     color: "#f59e0b",
-    shortDescription: "果物/肉+1 +格差で果物+1",
+    shortDescription: "果物/お肉+1 +格差で果物+1",
   },
   {
     id: "animal_care",
@@ -283,7 +283,7 @@ export const cardDefinitions: CardDefinition[] = [
     imagePath: "/cards/animal_care.png",
     groupId: "relief_higher_char",
     color: "#f43f5e",
-    shortDescription: "肉/魚+1 +格差で肉+1",
+    shortDescription: "お肉/お魚+1 +格差でお肉+1",
   },
   {
     id: "ocean_current_blessing",
@@ -299,7 +299,7 @@ export const cardDefinitions: CardDefinition[] = [
     imagePath: "/cards/ocean_current_blessing.png",
     groupId: "relief_higher_char",
     color: "#3b82f6",
-    shortDescription: "果物/魚+1 +格差で魚+1",
+    shortDescription: "果物/お魚+1 +格差でお魚+1",
   },
   {
     id: "big_harvest",
@@ -319,7 +319,7 @@ export const cardDefinitions: CardDefinition[] = [
     imagePath: "/cards/mercy.png",
     groupId: "power_events",
     color: "#c4b5fd",
-    shortDescription: "果物/肉/魚+1",
+    shortDescription: "果物/お肉/お魚+1",
   },
   {
     id: "scattered_food",
@@ -329,7 +329,7 @@ export const cardDefinitions: CardDefinition[] = [
     imagePath: "/cards/scattered_food.png",
     groupId: "power_events",
     color: "#4ade80",
-    shortDescription: "果物/肉/魚+1（配布無視）",
+    shortDescription: "果物/お肉/お魚+1（配布無視）",
   },
   {
     id: "change_shift",
@@ -339,7 +339,7 @@ export const cardDefinitions: CardDefinition[] = [
     imagePath: "/cards/change_shift.png",
     groupId: "power_events",
     color: "#2dd4bf",
-    shortDescription: "果物/肉/魚+1（交代）",
+    shortDescription: "果物/お肉/お魚+1（交代）",
   },
   {
     id: "begging",
@@ -349,7 +349,7 @@ export const cardDefinitions: CardDefinition[] = [
     imagePath: "/cards/begging.png",
     groupId: "power_events",
     color: "#f472b6",
-    shortDescription: "果物/肉/魚+1（おねだり）",
+    shortDescription: "果物/お肉/お魚+1（おねだり）",
   },
   {
     id: "mysterious_spring",
@@ -403,7 +403,7 @@ export const cardDefinitions: CardDefinition[] = [
     imagePath: "/cards/go_again_fish.png",
     groupId: "go_again",
     color: "#22d3ee",
-    shortDescription: "魚+1 & もう1枚",
+    shortDescription: "お魚+1 & もう1枚",
   },
   {
     id: "season_change",

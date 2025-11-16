@@ -9,7 +9,7 @@ type StatsPanelProps = {
 const resourceLabels = {
   fruit: "果物",
   meat: "お肉",
-  fish: "魚",
+  fish: "お魚",
 } as const;
 
 const resourceColors: Record<keyof typeof resourceLabels, string> = {
