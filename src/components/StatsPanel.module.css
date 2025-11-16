@@ -1,0 +1,132 @@
+.panel {
+  background: rgba(15, 23, 42, 0.85);
+  border-radius: 20px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.panelHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.panelHeader h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.panelHeader p {
+  margin: 0;
+  color: #94a3b8;
+}
+
+.warning {
+  margin: 0;
+  padding: 0.65rem 0.85rem;
+  border-radius: 12px;
+  background: rgba(248, 113, 113, 0.15);
+  color: #fecaca;
+  border: 1px solid rgba(248, 113, 113, 0.4);
+}
+
+.statGroup h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+  color: #f8fafc;
+}
+
+.statGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.expectationGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.75rem;
+}
+
+.expectationItem {
+  background: rgba(30, 41, 59, 0.8);
+  border-radius: 12px;
+  padding: 0.75rem;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.expectationItem span {
+  color: #cbd5f5;
+  font-size: 0.9rem;
+}
+
+.expectationItem strong {
+  font-size: 1.35rem;
+  color: #facc15;
+}
+
+.specialGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.75rem;
+}
+
+.specialGrid div {
+  background: rgba(30, 41, 59, 0.8);
+  border-radius: 12px;
+  padding: 0.75rem;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.specialLabel {
+  margin: 0;
+  color: #cbd5f5;
+  font-size: 0.9rem;
+}
+
+.specialGrid strong {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 1.2rem;
+}
+
+.specialGrid span {
+  display: block;
+  color: #38bdf8;
+  font-size: 0.95rem;
+}
+
+.tableWrap {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 0.65rem;
+  text-align: center;
+}
+
+th {
+  background: rgba(30, 41, 59, 0.85);
+  color: #cbd5f5;
+  font-weight: 600;
+}
+
+td {
+  border-top: 1px solid rgba(148, 163, 184, 0.2);
+  color: #f8fafc;
+}

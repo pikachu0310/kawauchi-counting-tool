@@ -1,0 +1,113 @@
+.app {
+  min-height: 100vh;
+  background: radial-gradient(circle at top left, #1e1b4b, #020617 65%);
+  color: #f8fafc;
+}
+
+.main {
+  width: min(1280px, 100%);
+  margin: 0 auto;
+  padding: 2.5rem clamp(1.25rem, 4vw, 3rem) 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.tag {
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #38bdf8;
+}
+
+.lead {
+  margin: 0.25rem 0 0;
+  color: #cbd5f5;
+  max-width: 640px;
+  line-height: 1.6;
+}
+
+.summaryRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.counterCard {
+  background: rgba(15, 23, 42, 0.85);
+  border-radius: 16px;
+  padding: 1rem 1.5rem;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+.counterCard p {
+  margin: 0;
+  color: #cbd5f5;
+}
+
+.counterCard strong {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #facc15;
+}
+
+.resetButton {
+  border: none;
+  border-radius: 999px;
+  padding: 0.9rem 1.5rem;
+  background: linear-gradient(120deg, #f97316, #f43f5e);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 15px 40px -15px rgba(249, 115, 22, 0.85);
+}
+
+.resetButton:hover {
+  transform: translateY(-2px);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr);
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.panelStack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.footer {
+  margin-top: 1rem;
+  background: rgba(15, 23, 42, 0.7);
+  border-radius: 16px;
+  padding: 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  color: #cbd5f5;
+}
+
+.footerLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  color: #94a3b8;
+}
+
+@media (max-width: 1024px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
