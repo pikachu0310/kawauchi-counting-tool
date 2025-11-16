@@ -44,10 +44,29 @@ const conditionSatisfied = (
   }
 };
 
+const sumVector = (vec: ResourceVector): number => vec.fruit + vec.meat + vec.fish;
+
+const subtractVectors = (a: ResourceVector, b: ResourceVector): ResourceVector => ({
+  fruit: a.fruit - b.fruit,
+  meat: a.meat - b.meat,
+  fish: a.fish - b.fish,
+});
+
+type GainInfo = {
+  vector: ResourceVector;
+  food: number;
+};
+
+type StatsOptions = {
+  itemFoodValue?: number;
+  seasonExpectation?: GainInfo;
+};
+
 const computeImmediateGain = (
   card: CardDefinition,
   conditions: ConditionsState,
-): ResourceVector => {
+  options: StatsOptions,
+): GainInfo => {
   const baseVector =
     card.id === "everyone_favorite"
       ? buildFavoriteVector(conditions.favoriteSelection)
@@ -63,7 +82,12 @@ const computeImmediateGain = (
     }
   }
 
-  return gain;
+  const foodGain =
+    card.isItemCard && options.itemFoodValue !== undefined
+      ? options.itemFoodValue
+      : sumVector(gain);
+
+  return { vector: gain, food: foodGain };
 };
 
 export type ResourceThresholdMap = Record<
@@ -87,13 +111,18 @@ export const calculateStats = (
   deckState: DeckState,
   conditions: ConditionsState,
   cards: CardDefinition[],
-): DeckComputationResult => {
-  const immediateGains = cards.reduce<Record<CardId, ResourceVector>>(
+  options: StatsOptions = {},
+): DeckComputationResult & { foodExpectation: number } => {
+  const immediateGains = cards.reduce<Record<CardId, GainInfo>>(
     (acc, card) => {
-      acc[card.id] = computeImmediateGain(card, conditions);
+      if (card.id === "season_change" && options.seasonExpectation) {
+        acc[card.id] = options.seasonExpectation;
+      } else {
+        acc[card.id] = computeImmediateGain(card, conditions, options);
+      }
       return acc;
     },
-    {} as Record<CardId, ResourceVector>,
+    {} as Record<CardId, GainInfo>,
   );
 
   const totalCards = cards.reduce(
@@ -115,6 +144,7 @@ export const calculateStats = (
 
   const expectationBase = zeroVector();
   const expectationFinal = zeroVector();
+  let foodExpectationFinal = 0;
   const resourceAtLeast: ResourceThresholdMap = resourceTypes.reduce(
     (acc, resource) => {
       acc[resource] = { 1: 0, 2: 0, 3: 0 };
@@ -138,6 +168,8 @@ export const calculateStats = (
   }
 
   const cardProbabilities: Partial<Record<CardId, number>> = {};
+  const totalVector = zeroVector();
+  let totalFood = 0;
 
   for (const card of cards) {
     const remaining = deckState[card.id] ?? 0;
@@ -145,33 +177,46 @@ export const calculateStats = (
     const probability = remaining / totalCards;
     cardProbabilities[card.id] = probability;
     const gain = immediateGains[card.id];
+    totalVector.fruit += gain.vector.fruit * remaining;
+    totalVector.meat += gain.vector.meat * remaining;
+    totalVector.fish += gain.vector.fish * remaining;
+    totalFood += gain.food * remaining;
+  }
 
-    const contributionBase = scaleVector(gain, probability);
-    expectationBase.fruit += contributionBase.fruit;
-    expectationBase.meat += contributionBase.meat;
-    expectationBase.fish += contributionBase.fish;
+  expectationBase.fruit = totalVector.fruit / totalCards;
+  expectationBase.meat = totalVector.meat / totalCards;
+  expectationBase.fish = totalVector.fish / totalCards;
+
+  for (const card of cards) {
+    const probability = cardProbabilities[card.id];
+    if (!probability) continue;
+    const gain = immediateGains[card.id];
+
+    const restCards = totalCards - 1;
+    const restVectorAvg =
+      restCards > 0
+        ? scaleVector(subtractVectors(totalVector, gain.vector), 1 / restCards)
+        : zeroVector();
+    const restFoodAvg = restCards > 0 ? (totalFood - gain.food) / restCards : 0;
+
+    const useExtra = card.isGoAgain || card.extraActionCard;
+    const effectiveVector = useExtra ? addVectors(gain.vector, restVectorAvg) : gain.vector;
+    const effectiveFood = useExtra ? gain.food + restFoodAvg : gain.food;
+
+    const contributionFinal = scaleVector(effectiveVector, probability);
+    expectationFinal.fruit += contributionFinal.fruit;
+    expectationFinal.meat += contributionFinal.meat;
+    expectationFinal.fish += contributionFinal.fish;
+    foodExpectationFinal += effectiveFood * probability;
 
     for (const resource of resourceTypes) {
-      const amount = gain[resource];
+      const amount = effectiveVector[resource];
       for (const threshold of thresholds) {
         if (amount >= threshold) {
           resourceAtLeast[resource][threshold] += probability;
         }
       }
     }
-  }
-
-  for (const card of cards) {
-    const probability = cardProbabilities[card.id];
-    if (!probability) continue;
-    const gain = immediateGains[card.id];
-    const effectiveGain = card.isGoAgain
-      ? addVectors(gain, expectationBase)
-      : gain;
-    const contributionFinal = scaleVector(effectiveGain, probability);
-    expectationFinal.fruit += contributionFinal.fruit;
-    expectationFinal.meat += contributionFinal.meat;
-    expectationFinal.fish += contributionFinal.fish;
   }
 
   return {
@@ -184,6 +229,7 @@ export const calculateStats = (
     expectationFinal,
     resourceAtLeast,
     immediateGains,
+    foodExpectation: foodExpectationFinal,
   };
 };
 

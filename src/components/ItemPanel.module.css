@@ -1,0 +1,77 @@
+.panel {
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 20px;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  backdrop-filter: blur(6px);
+}
+
+.panel h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.panel p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+}
+
+.tile {
+  border: none;
+  border-radius: 14px;
+  padding: 0.4rem;
+  min-height: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+  color: #0f172a;
+}
+
+.tile:focus-visible {
+  outline: 2px solid #facc15;
+  outline-offset: 2px;
+}
+
+.active {
+  box-shadow: 0 6px 12px rgba(15, 23, 42, 0.35);
+}
+
+.inactive {
+  opacity: 0.35;
+  filter: grayscale(0.2);
+}
+
+.title {
+  font-size: 0.8rem;
+}
+
+.description {
+  font-size: 0.7rem;
+}
+
+@media (max-width: 1280px) {
+  .grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 800px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

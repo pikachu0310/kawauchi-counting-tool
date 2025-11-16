@@ -85,3 +85,30 @@ export type DeckState = Record<CardId, number>;
 export type CardInstanceId = `${CardId}__${number}`;
 
 export type CardInstanceState = Record<CardInstanceId, boolean>;
+
+export type ItemId =
+  | "preserved_food"
+  | "fair_scale"
+  | "energy_drink"
+  | "thief_bundle"
+  | "blueprint"
+  | "expedition_pack"
+  | "island_badge"
+  | "hungry_knife"
+  | "help_ticket"
+  | "thief_wallet"
+  | "underground_set";
+
+export type ItemDefinition = {
+  id: ItemId;
+  name: string;
+  count: number;
+  description: string;
+  foodGain: number;
+  extraDraws?: number;
+  color: string;
+};
+
+export type ItemInstanceId = `${ItemId}__${number}`;
+
+export type ItemInstanceState = Record<ItemInstanceId, boolean>;

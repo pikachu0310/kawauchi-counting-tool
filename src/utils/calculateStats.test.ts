@@ -42,11 +42,11 @@ describe("calculateStats", () => {
     expect(stats.totalCards).toBe(2);
     expect(stats.expectationBase.fruit).toBeCloseTo(0.5, 5);
     expect(stats.expectationBase.meat).toBeCloseTo(1, 5);
-    expect(stats.expectationFinal.fruit).toBeCloseTo(0.75, 5);
-    expect(stats.expectationFinal.meat).toBeCloseTo(1.5, 5);
+    expect(stats.expectationFinal.fruit).toBeCloseTo(0.5, 5);
+    expect(stats.expectationFinal.meat).toBeCloseTo(2, 5);
 
     expect(stats.resourceAtLeast.fruit[1]).toBeCloseTo(0.5, 5);
-    expect(stats.resourceAtLeast.meat[2]).toBeCloseTo(0.5, 5);
+    expect(stats.resourceAtLeast.meat[2]).toBeCloseTo(1, 5);
   });
 
   it("returns zeroes for empty deck", () => {

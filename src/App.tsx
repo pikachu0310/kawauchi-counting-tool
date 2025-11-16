@@ -4,15 +4,28 @@ import styles from "./App.module.css";
 import { CardGrid } from "./components/CardGrid";
 import { ConditionPanel } from "./components/ConditionPanel";
 import { StatsPanel } from "./components/StatsPanel";
+import { ItemPanel } from "./components/ItemPanel";
 import { resourceColors, resourceLabels } from "./components/statsConfig";
 import {
   cardDefinitions,
   cardGroups,
+  createInitialDeckState,
   createInitialInstanceState,
   deriveDeckStateFromInstances,
 } from "./data/cardDefinitions";
+import {
+  itemDefinitions,
+  createInitialItemState,
+} from "./data/itemDefinitions";
 import { calculateStats, formatPercentage, formatResourceValue } from "./utils/calculateStats";
-import type { CardInstanceId, CardInstanceState, ConditionsState } from "./types";
+import { calculateItemStats } from "./utils/calculateItemStats";
+import type {
+  CardInstanceId,
+  CardInstanceState,
+  ConditionsState,
+  ItemInstanceId,
+  ItemInstanceState,
+} from "./types";
 
 const initialConditions: ConditionsState = {
   hasHigherCharRoomPlayer: false,
@@ -29,18 +42,66 @@ export const App = () => {
   const [instanceState, setInstanceState] = useState<CardInstanceState>(() =>
     createInitialInstanceState(),
   );
+  const [itemState, setItemState] = useState<ItemInstanceState>(() => createInitialItemState());
   const deckState = useMemo(
     () => deriveDeckStateFromInstances(instanceState),
     [instanceState],
   );
 
+  const seasonStatsBase = useMemo(
+    () =>
+      calculateStats(createInitialDeckState(), conditions, cardDefinitions, {
+        itemFoodValue: 0,
+      }),
+    [conditions],
+  );
+
+  const statsWithoutItems = useMemo(
+    () =>
+      calculateStats(deckState, conditions, cardDefinitions, {
+        itemFoodValue: 0,
+        seasonExpectation: {
+          vector: seasonStatsBase.expectationFinal,
+          food: seasonStatsBase.foodExpectation,
+        },
+      }),
+    [deckState, conditions, seasonStatsBase],
+  );
+
+  const itemStats = useMemo(
+    () => calculateItemStats(itemState, itemDefinitions, statsWithoutItems.foodExpectation),
+    [itemState, statsWithoutItems.foodExpectation],
+  );
+
+  const seasonStatsWithItems = useMemo(
+    () =>
+      calculateStats(createInitialDeckState(), conditions, cardDefinitions, {
+        itemFoodValue: itemStats.expectedFoodGain,
+      }),
+    [conditions, itemStats.expectedFoodGain],
+  );
+
   const stats = useMemo(
-    () => calculateStats(deckState, conditions, cardDefinitions),
-    [deckState, conditions],
+    () =>
+      calculateStats(deckState, conditions, cardDefinitions, {
+        itemFoodValue: itemStats.expectedFoodGain,
+        seasonExpectation: {
+          vector: seasonStatsWithItems.expectationFinal,
+          food: seasonStatsWithItems.foodExpectation,
+        },
+      }),
+    [deckState, conditions, itemStats.expectedFoodGain, seasonStatsWithItems],
   );
 
   const handleToggleInstance = (instanceId: CardInstanceId) => {
     setInstanceState((prev) => ({
+      ...prev,
+      [instanceId]: !prev[instanceId],
+    }));
+  };
+
+  const handleToggleItem = (instanceId: ItemInstanceId) => {
+    setItemState((prev) => ({
       ...prev,
       [instanceId]: !prev[instanceId],
     }));
@@ -71,12 +132,15 @@ export const App = () => {
           </h1>
         </header>
         <div className={styles.layout}>
-          <CardGrid
-            cards={cardDefinitions}
-            groups={cardGroups}
-            instanceState={instanceState}
-            onToggle={handleToggleInstance}
-          />
+          <div className={styles.leftColumn}>
+            <CardGrid
+              cards={cardDefinitions}
+              groups={cardGroups}
+              instanceState={instanceState}
+              onToggle={handleToggleInstance}
+            />
+            <ItemPanel itemState={itemState} onToggle={handleToggleItem} />
+          </div>
           <div className={styles.panelStack}>
             <ConditionPanel
               conditions={conditions}
@@ -123,9 +187,30 @@ export const App = () => {
                   </strong>
                   <span>{formatPercentage(stats.extraActionProbability)}</span>
                 </div>
+                <div className={styles.footerItemBlock}>
+                  <p className={styles.footerSpecialLabel}>アイテム使用時の期待食材</p>
+                  <strong>{itemStats.expectedFoodGain.toFixed(2)} 個</strong>
+                </div>
               </div>
             </section>
           </div>
+        <section className={styles.notes}>
+          <h3>留意点</h3>
+          <ul>
+            <li>
+              1探検で資源がx枚以上得られる確率は、各カードの獲得量に「もう一度行動」(いってきまーす！・不思議な湧き水・地下探検セットなど)で引く追加1枚ぶんの平均資源を加えた上で確率加重して近似しています。
+            </li>
+            <li>
+              1探検で得られる期待食材は、カード自身の獲得量 + 「みんなの大好物」や conditional 反映後の値 + 発見系で得たアイテムを即使用した場合の期待食材 + 追加ドローぶんの平均値から算出しています。
+            </li>
+            <li>
+              季節の変わり目は「初期デッキに戻してから 1 枚引く」ものとして初期状態の期待値を使用した近似になっています。アイテム状態はリセットされません。
+            </li>
+            <li>
+              アイテムの効果は簡単のため記載の通りで計算しています。また、同色大量シリーズは簡単のため固定値で計算しています。
+            </li>
+          </ul>
+        </section>
         <footer className={styles.footer}>
           <p className={styles.footerCredits}>
             作者:

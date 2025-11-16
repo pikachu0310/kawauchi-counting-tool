@@ -41,6 +41,7 @@ export const ConditionPanel = ({
         <h2>卓の状況</h2>
         <div className={styles.summaryRow}>
           <div className={styles.remaining}>
+            <p>カード残り枚数</p>
             <strong>{remainingCards}</strong>
           </div>
           <button type="button" className={styles.resetButton} onClick={onReset}>

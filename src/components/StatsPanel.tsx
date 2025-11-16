@@ -44,6 +44,9 @@ export const StatsPanel = ({ stats }: StatsPanelProps) => {
           </tbody>
         </table>
       </div>
+      <p className={styles.foodExpectation}>
+        1探検で得られる期待食材: {stats.foodExpectation.toFixed(2)} 個
+      </p>
     </section>
   );
 };
