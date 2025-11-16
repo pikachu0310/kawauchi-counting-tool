@@ -5,7 +5,6 @@ import { CardGrid } from "./components/CardGrid";
 import { ConditionPanel } from "./components/ConditionPanel";
 import { StatsPanel } from "./components/StatsPanel";
 import { resourceColors, resourceLabels } from "./components/statsConfig";
-import { resourceLabels, resourceColors } from "./components/StatsPanel";
 import {
   cardDefinitions,
   cardGroups,
@@ -88,11 +87,7 @@ export const App = () => {
             <StatsPanel stats={stats} />
           </div>
         </div>
-        <footer className={styles.footer}>
-          <p>
-            色付きカードをタップして残り枚数を調整し、右側で条件と確率を確認してください。季節の変わり目は強力イベント欄のボタンからリセットできます。
-          </p>
-          <div className={styles.footerExtra}>
+        <div className={styles.footerExtra}>
             <section>
               <h3>次の 1 枚で獲得できる期待値</h3>
               <div className={styles.footerExpectationGrid}>
@@ -131,6 +126,7 @@ export const App = () => {
               </div>
             </section>
           </div>
+        <footer className={styles.footer}>
           <p className={styles.footerCredits}>
             作者:
             {" "}

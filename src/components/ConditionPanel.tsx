@@ -41,11 +41,10 @@ export const ConditionPanel = ({
         <h2>卓の状況</h2>
         <div className={styles.summaryRow}>
           <div className={styles.remaining}>
-            <p>残り枚数</p>
             <strong>{remainingCards}</strong>
           </div>
           <button type="button" className={styles.resetButton} onClick={onReset}>
-            季節の変わり目
+            季節の変わり目 (リセット)
           </button>
         </div>
       </div>
