@@ -119,17 +119,45 @@ export const App = () => {
     <div className={styles.app}>
       <main className={styles.main}>
         <header className={styles.header}>
-          <h1>
-            <a
-              href="https://leftonbo.github.io/kawauchi/"
-              target="_blank"
-              rel="noreferrer"
-              className={styles.brandLink}
-            >
-              かわうち
-            </a>{" "}
-            カウンティングツール
-          </h1>
+          <div className={styles.heroIntro}>
+            <h1 className={styles.heroTitle}>
+              <span className={styles.heroTitleAccent}>かわうち</span>
+              <span className={styles.heroTitleMain}>カウンティングツール</span>
+            </h1>
+            <p className={styles.heroDescription}>
+              <a
+                href="https://leftonbo.github.io/kawauchi/"
+                target="_blank"
+                rel="noreferrer"
+                className={styles.heroGameLink}
+              >
+                「かわいい子たちとおうちを建てるゲーム」
+              </a>
+              というボードゲームの、カウンティング及び期待値の直感的な把握に焦点を置いたファンメイドのツールです。
+            </p>
+          </div>
+          <div className={styles.heroAuthorCard}>
+            <p className={styles.heroMetaLabel}>作者</p>
+            <p className={styles.heroAuthorName}>pikachu0310</p>
+            <div className={styles.heroAuthorLinks}>
+              <a
+                href="https://x.com/pikachu0310VRC"
+                target="_blank"
+                rel="noreferrer"
+                className={styles.heroButton}
+              >
+                Twitter
+              </a>
+              <a
+                href="https://github.com/pikachu0310/kawauchi-counting-tool"
+                target="_blank"
+                rel="noreferrer"
+                className={styles.heroGhostButton}
+              >
+                GitHub
+              </a>
+            </div>
+          </div>
         </header>
         <div className={styles.layout}>
           <div className={styles.leftColumn}>
@@ -209,25 +237,11 @@ export const App = () => {
             <li>
               アイテムの効果は簡単のため記載の通りで計算しています。また、同色大量シリーズは簡単のため固定値で計算しています。
             </li>
+            <li>
+              主要な箇所が1画面で収まるように努力しました。VRから扱いやすいようにボタンは大きめにしています。バグ報告や問題点などがありましたら、XのDMもしくはGithub上で連絡をお願いします。
+            </li>
           </ul>
         </section>
-        <footer className={styles.footer}>
-          <p className={styles.footerCredits}>
-            作者:
-            {" "}
-            <a href="https://x.com/pikachu0310VRC" target="_blank" rel="noreferrer">
-              pikachu0310
-            </a>
-            {" / "}
-            <a
-              href="https://github.com/pikachu0310/kawauchi-counting-tool"
-              target="_blank"
-              rel="noreferrer"
-            >
-              GitHub
-            </a>
-          </p>
-        </footer>
       </main>
     </div>
   );
