@@ -18,7 +18,7 @@ export const cardGroups: CardGroup[] = [
   {
     id: "general_gather",
     title: "採集カード",
-    description: "基本の採集アクション。クリックで山札に残している枚数を制御します。",
+    description: "クリックで切り替えれます。",
   },
   {
     id: "general_overhunt",
@@ -27,23 +27,22 @@ export const cardGroups: CardGroup[] = [
   {
     id: "item_discovery",
     title: "アイテム発見",
-    description: "アイテムを引ける確率に影響する 10 枚。",
-  },
-  {
-    id: "mono_resource",
-    title: "同色大量シリーズ",
   },
   {
     id: "relief_min_char",
     title: "救済シリーズ：最少キャラ条件",
   },
   {
+    id: "relief_higher_char",
+    title: "救済シリーズ：格差条件",
+  },
+  {
     id: "power_events",
     title: "強力イベント",
   },
   {
-    id: "relief_higher_char",
-    title: "救済シリーズ：格差条件",
+    id: "mono_resource",
+    title: "同色大量シリーズ",
   },
   {
     id: "go_again",

@@ -23,7 +23,7 @@
 
 .groupStack {
   column-count: 3;
-  column-gap: 0.85rem;
+  column-gap: 1rem;
 }
 
 .group {
