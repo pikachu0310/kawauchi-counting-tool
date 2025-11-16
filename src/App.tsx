@@ -37,12 +37,15 @@ const initialConditions: ConditionsState = {
   },
 };
 
+type ThemeMode = "modern" | "simple";
+
 export const App = () => {
   const [conditions, setConditions] = useState<ConditionsState>(initialConditions);
   const [instanceState, setInstanceState] = useState<CardInstanceState>(() =>
     createInitialInstanceState(),
   );
   const [itemState, setItemState] = useState<ItemInstanceState>(() => createInitialItemState());
+  const [theme, setTheme] = useState<ThemeMode>("modern");
   const deckState = useMemo(
     () => deriveDeckStateFromInstances(instanceState),
     [instanceState],
@@ -115,8 +118,12 @@ export const App = () => {
     setInstanceState(createInitialInstanceState());
   };
 
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "modern" ? "simple" : "modern"));
+  };
+
   return (
-    <div className={styles.app}>
+    <div className={styles.app} data-theme={theme}>
       <main className={styles.main}>
         <header className={styles.header}>
           <div className={styles.heroIntro}>
@@ -136,26 +143,40 @@ export const App = () => {
               というボードゲームの、カウンティング及び期待値の直感的な把握に焦点を置いたファンメイドのツールです。
             </p>
           </div>
-          <div className={styles.heroAuthorCard}>
-            <p className={styles.heroMetaLabel}>作者</p>
-            <p className={styles.heroAuthorName}>pikachu0310</p>
-            <div className={styles.heroAuthorLinks}>
-              <a
-                href="https://x.com/pikachu0310VRC"
-                target="_blank"
-                rel="noreferrer"
-                className={styles.heroButton}
+          <div className={styles.heroMetaArea}>
+            <div className={styles.themeToggleGroup}>
+              <span className={styles.themeToggleLabel}>テーマ</span>
+              <button
+                type="button"
+                className={styles.themeToggleButton}
+                onClick={toggleTheme}
+                aria-pressed={theme === "simple"}
+                aria-label="テーマ切り替え"
               >
-                Twitter
-              </a>
-              <a
-                href="https://github.com/pikachu0310/kawauchi-counting-tool"
-                target="_blank"
-                rel="noreferrer"
-                className={styles.heroGhostButton}
-              >
-                GitHub
-              </a>
+                {theme === "simple" ? "シンプル" : "リッチ"}
+              </button>
+            </div>
+            <div className={styles.heroAuthorCard}>
+              <p className={styles.heroMetaLabel}>作者</p>
+              <p className={styles.heroAuthorName}>pikachu0310</p>
+              <div className={styles.heroAuthorLinks}>
+                <a
+                  href="https://x.com/pikachu0310VRC"
+                  target="_blank"
+                  rel="noreferrer"
+                  className={styles.heroButton}
+                >
+                  Twitter
+                </a>
+                <a
+                  href="https://github.com/pikachu0310/kawauchi-counting-tool"
+                  target="_blank"
+                  rel="noreferrer"
+                  className={styles.heroGhostButton}
+                >
+                  GitHub
+                </a>
+              </div>
             </div>
           </div>
         </header>

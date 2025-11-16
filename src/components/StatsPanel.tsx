@@ -4,7 +4,7 @@ import styles from "./StatsPanel.module.css";
 import { resourceColors, resourceLabels, thresholds } from "./statsConfig";
 
 type StatsPanelProps = {
-  stats: DeckComputationResult;
+  stats: DeckComputationResult & { foodExpectation: number };
 };
 
 export const StatsPanel = ({ stats }: StatsPanelProps) => {

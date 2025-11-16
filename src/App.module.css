@@ -86,6 +86,49 @@
   line-height: 1.6;
 }
 
+.heroMetaArea {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.themeToggleGroup {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.2rem;
+  padding: 0.55rem 0.6rem;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: rgba(15, 23, 42, 0.4);
+}
+
+.themeToggleLabel {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(148, 163, 184, 0.9);
+}
+
+.themeToggleButton {
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  background: rgba(15, 23, 42, 0.5);
+  color: #e2e8f0;
+  border-radius: 999px;
+  padding: 0.25rem 0.8rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.themeToggleButton:hover {
+  background: rgba(56, 189, 248, 0.2);
+  color: #f8fafc;
+}
+
 .heroGameLink {
   color: #38bdf8;
   text-decoration: none;
@@ -313,6 +356,112 @@
   left: 0;
   top: 0.5rem;
   box-shadow: 0 0 0 6px rgba(56, 189, 248, 0.15);
+}
+
+.app[data-theme="simple"] {
+  overflow: visible;
+  background: #020617;
+}
+
+.app[data-theme="simple"]::before,
+.app[data-theme="simple"]::after {
+  opacity: 0;
+  background: none !important;
+  content: none;
+}
+
+:global([data-theme="simple"]) .main {
+  gap: 1.5rem;
+}
+
+:global([data-theme="simple"]) .header {
+  background: rgba(15, 23, 42, 0.55);
+  border-radius: 16px;
+  box-shadow: none;
+  padding: 1.1rem clamp(1rem, 4vw, 2rem);
+}
+
+:global([data-theme="simple"]) .heroTitleAccent {
+  color: #f8fafc;
+}
+
+:global([data-theme="simple"]) .heroDescription {
+  color: #cbd5f5;
+  line-height: 1.55;
+}
+
+:global([data-theme="simple"]) .heroAuthorCard {
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+  align-items: flex-end;
+}
+
+:global([data-theme="simple"]) .heroButton {
+  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.5);
+  box-shadow: none;
+  color: #e0f2fe;
+}
+
+:global([data-theme="simple"]) .heroGhostButton {
+  background: transparent;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+}
+
+.app[data-theme="simple"] .themeToggleGroup {
+  background: rgba(15, 23, 42, 0.5);
+  border-color: rgba(148, 163, 184, 0.4);
+}
+
+.app[data-theme="simple"] .themeToggleLabel {
+  color: #cbd5f5;
+}
+
+.app[data-theme="simple"] .themeToggleButton {
+  background: rgba(56, 189, 248, 0.2);
+  color: #e2e8f0;
+}
+
+:global([data-theme="simple"]) .footerExtra section {
+  background: rgba(15, 23, 42, 0.75);
+  border-radius: 14px;
+  box-shadow: none;
+}
+
+:global([data-theme="simple"]) .footerExpectationItem {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  box-shadow: none;
+  padding: 0.6rem;
+}
+
+:global([data-theme="simple"]) .footerSpecialGrid div {
+  border-radius: 10px;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  box-shadow: none;
+}
+
+:global([data-theme="simple"]) .notes {
+  border-radius: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  padding: 0.9rem 1rem;
+  box-shadow: none;
+}
+
+:global([data-theme="simple"]) .notes ul {
+  list-style: disc;
+  padding-left: 1.2rem;
+}
+
+:global([data-theme="simple"]) .notes li {
+  padding-left: 0;
+}
+
+:global([data-theme="simple"]) .notes li::before {
+  display: none;
 }
 
 @media (max-width: 1024px) {

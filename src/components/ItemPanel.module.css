@@ -14,6 +14,10 @@
   font-size: 1.1rem;
 }
 
+:global([data-theme="simple"]) .panel h2 {
+  display: none;
+}
+
 .panel p {
   margin: 0;
   color: #94a3b8;

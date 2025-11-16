@@ -140,3 +140,35 @@
   outline: 2px solid #fef9c3;
   outline-offset: 3px;
 }
+
+:global([data-theme="simple"]) .panel {
+  background: rgba(15, 23, 42, 0.8);
+  border-radius: 20px;
+  box-shadow: none;
+  padding: 1.25rem;
+}
+
+:global([data-theme="simple"]) .checkboxGroup label {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+:global([data-theme="simple"]) .preferenceGroup {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+:global([data-theme="simple"]) .favoriteItem {
+  background: rgba(30, 41, 59, 0.75);
+}
+
+:global([data-theme="simple"]) .remaining {
+  box-shadow: none;
+}
+
+:global([data-theme="simple"]) .resetButton {
+  background: #f97316;
+  box-shadow: none;
+}

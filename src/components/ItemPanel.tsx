@@ -56,7 +56,6 @@ export const ItemPanel = ({ itemState, onToggle }: ItemPanelProps) => {
         {tiles.map(({ instanceId, item, active }) => (
           <ItemTile
             key={instanceId}
-            id={instanceId}
             name={item.name}
             description={item.description}
             color={item.color}

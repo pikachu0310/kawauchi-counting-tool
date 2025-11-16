@@ -178,3 +178,51 @@ td:first-child {
   color: #e0f2fe;
   text-align: center;
 }
+
+:global([data-theme="simple"]) .panel {
+  background: rgba(15, 23, 42, 0.85);
+  border-radius: 20px;
+  box-shadow: none;
+}
+
+:global([data-theme="simple"]) .panelHeader h2 {
+  font-size: 0.95rem;
+}
+
+:global([data-theme="simple"]) .tableWrap {
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: transparent;
+  box-shadow: none;
+}
+
+:global([data-theme="simple"]) table {
+  font-size: 0.95rem;
+}
+
+:global([data-theme="simple"]) th,
+:global([data-theme="simple"]) td {
+  padding: 0.65rem;
+}
+
+:global([data-theme="simple"]) tbody tr:nth-child(odd) td,
+:global([data-theme="simple"]) tbody tr:hover td {
+  background: transparent;
+}
+
+:global([data-theme="simple"]) td:first-child,
+:global([data-theme="simple"]) th:first-child {
+  text-align: center;
+  padding-left: 0;
+}
+
+:global([data-theme="simple"]) td:first-child {
+  font-weight: 600;
+}
+
+:global([data-theme="simple"]) .foodExpectation {
+  border-radius: 10px;
+  background: rgba(30, 41, 59, 0.65);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  color: #f8fafc;
+}

@@ -104,7 +104,7 @@ export type DeckComputationResult = {
   expectationBase: ResourceVector;
   expectationFinal: ResourceVector;
   resourceAtLeast: ResourceThresholdMap;
-  immediateGains: Record<CardId, ResourceVector>;
+  immediateGains: Record<CardId, GainInfo>;
 };
 
 export const calculateStats = (
@@ -164,6 +164,7 @@ export const calculateStats = (
       expectationFinal,
       resourceAtLeast,
       immediateGains,
+      foodExpectation: 0,
     };
   }
 
