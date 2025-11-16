@@ -46,7 +46,7 @@ export const cardGroups: CardGroup[] = [
   },
   {
     id: "go_again",
-    title: "やりなおしシリーズ",
+    title: "いってらっしゃいシリーズ",
   },
 ];
 

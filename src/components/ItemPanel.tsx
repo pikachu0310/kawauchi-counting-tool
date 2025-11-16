@@ -51,6 +51,7 @@ export const ItemPanel = ({ itemState, onToggle }: ItemPanelProps) => {
 
   return (
     <section className={styles.panel}>
+      <h2>アイテムカウンティング</h2>
       <div className={styles.grid}>
         {tiles.map(({ instanceId, item, active }) => (
           <ItemTile
