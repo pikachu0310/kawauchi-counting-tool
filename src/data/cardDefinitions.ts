@@ -1,4 +1,11 @@
-import type { CardDefinition, DeckState } from "../types";
+import type {
+  CardDefinition,
+  CardGroup,
+  CardId,
+  CardInstanceId,
+  CardInstanceState,
+  DeckState,
+} from "../types";
 import type { ResourceVector } from "../types";
 
 const resource = (fruit: number, meat: number, fish: number): ResourceVector => ({
@@ -7,6 +14,47 @@ const resource = (fruit: number, meat: number, fish: number): ResourceVector => 
   fish,
 });
 
+export const cardGroups: CardGroup[] = [
+  {
+    id: "general_gather",
+    title: "採集カード",
+    description: "基本の採集アクション。クリックで山札に残している枚数を制御します。",
+  },
+  {
+    id: "general_overhunt",
+    title: "乱獲カード",
+  },
+  {
+    id: "item_discovery",
+    title: "アイテム発見",
+    description: "アイテムを引ける確率に影響する 10 枚。",
+  },
+  {
+    id: "mono_resource",
+    title: "同色大量シリーズ",
+  },
+  {
+    id: "relief_min_char",
+    title: "救済シリーズ：最少キャラ条件",
+  },
+  {
+    id: "relief_higher_char",
+    title: "救済シリーズ：格差条件",
+  },
+  {
+    id: "power_events",
+    title: "強力イベント",
+  },
+  {
+    id: "go_again",
+    title: "やりなおしシリーズ",
+  },
+  {
+    id: "reset",
+    title: "リセット",
+  },
+];
+
 export const cardDefinitions: CardDefinition[] = [
   {
     id: "gather_fruit2",
@@ -14,6 +62,7 @@ export const cardDefinitions: CardDefinition[] = [
     count: 2,
     baseGain: resource(2, 0, 0),
     imagePath: "/cards/gather_fruit2.png",
+    groupId: "general_gather",
   },
   {
     id: "gather_meat2",
@@ -21,6 +70,7 @@ export const cardDefinitions: CardDefinition[] = [
     count: 2,
     baseGain: resource(0, 2, 0),
     imagePath: "/cards/gather_meat2.png",
+    groupId: "general_gather",
   },
   {
     id: "gather_fish2",
@@ -28,6 +78,7 @@ export const cardDefinitions: CardDefinition[] = [
     count: 2,
     baseGain: resource(0, 0, 2),
     imagePath: "/cards/gather_fish2.png",
+    groupId: "general_gather",
   },
   {
     id: "gather_fruit_meat",
@@ -35,6 +86,7 @@ export const cardDefinitions: CardDefinition[] = [
     count: 3,
     baseGain: resource(1, 1, 0),
     imagePath: "/cards/gather_fruit_meat.png",
+    groupId: "general_gather",
   },
   {
     id: "gather_fruit_fish",
@@ -42,6 +94,7 @@ export const cardDefinitions: CardDefinition[] = [
     count: 3,
     baseGain: resource(1, 0, 1),
     imagePath: "/cards/gather_fruit_fish.png",
+    groupId: "general_gather",
   },
   {
     id: "gather_meat_fish",
@@ -49,6 +102,7 @@ export const cardDefinitions: CardDefinition[] = [
     count: 3,
     baseGain: resource(0, 1, 1),
     imagePath: "/cards/gather_meat_fish.png",
+    groupId: "general_gather",
   },
   {
     id: "overhunt_fruit2",
@@ -56,6 +110,7 @@ export const cardDefinitions: CardDefinition[] = [
     count: 1,
     baseGain: resource(2, 0, 0),
     imagePath: "/cards/overhunt_fruit2.png",
+    groupId: "general_overhunt",
   },
   {
     id: "overhunt_meat2",
@@ -63,6 +118,7 @@ export const cardDefinitions: CardDefinition[] = [
     count: 1,
     baseGain: resource(0, 2, 0),
     imagePath: "/cards/overhunt_meat2.png",
+    groupId: "general_overhunt",
   },
   {
     id: "overhunt_fish2",
@@ -70,6 +126,7 @@ export const cardDefinitions: CardDefinition[] = [
     count: 1,
     baseGain: resource(0, 0, 2),
     imagePath: "/cards/overhunt_fish2.png",
+    groupId: "general_overhunt",
   },
   {
     id: "find_item",
@@ -78,6 +135,7 @@ export const cardDefinitions: CardDefinition[] = [
     baseGain: resource(0, 0, 0),
     isItemCard: true,
     imagePath: "/cards/find_item.png",
+    groupId: "item_discovery",
   },
   {
     id: "big_find",
@@ -86,6 +144,7 @@ export const cardDefinitions: CardDefinition[] = [
     baseGain: resource(0, 0, 0),
     isItemCard: true,
     imagePath: "/cards/big_find.png",
+    groupId: "item_discovery",
   },
   {
     id: "buried_treasure",
@@ -94,6 +153,7 @@ export const cardDefinitions: CardDefinition[] = [
     baseGain: resource(0, 0, 0),
     isItemCard: true,
     imagePath: "/cards/buried_treasure.png",
+    groupId: "item_discovery",
   },
   {
     id: "fruit_hunt",
@@ -101,6 +161,7 @@ export const cardDefinitions: CardDefinition[] = [
     count: 1,
     baseGain: resource(3, 0, 0),
     imagePath: "/cards/fruit_hunt.png",
+    groupId: "mono_resource",
   },
   {
     id: "barbecue",
@@ -108,6 +169,7 @@ export const cardDefinitions: CardDefinition[] = [
     count: 1,
     baseGain: resource(0, 3, 0),
     imagePath: "/cards/barbecue.png",
+    groupId: "mono_resource",
   },
   {
     id: "big_catch",
@@ -115,6 +177,7 @@ export const cardDefinitions: CardDefinition[] = [
     count: 1,
     baseGain: resource(0, 0, 3),
     imagePath: "/cards/big_catch.png",
+    groupId: "mono_resource",
   },
   {
     id: "rescued_fish",
@@ -128,6 +191,7 @@ export const cardDefinitions: CardDefinition[] = [
       },
     ],
     imagePath: "/cards/rescued_fish.png",
+    groupId: "relief_min_char",
   },
   {
     id: "blessing_spring",
@@ -141,6 +205,7 @@ export const cardDefinitions: CardDefinition[] = [
       },
     ],
     imagePath: "/cards/blessing_spring.png",
+    groupId: "relief_min_char",
   },
   {
     id: "basket_with_hole",
@@ -154,6 +219,7 @@ export const cardDefinitions: CardDefinition[] = [
       },
     ],
     imagePath: "/cards/basket_with_hole.png",
+    groupId: "relief_min_char",
   },
   {
     id: "harvest_help",
@@ -167,6 +233,7 @@ export const cardDefinitions: CardDefinition[] = [
       },
     ],
     imagePath: "/cards/harvest_help.png",
+    groupId: "relief_higher_char",
   },
   {
     id: "animal_care",
@@ -180,6 +247,7 @@ export const cardDefinitions: CardDefinition[] = [
       },
     ],
     imagePath: "/cards/animal_care.png",
+    groupId: "relief_higher_char",
   },
   {
     id: "ocean_current_blessing",
@@ -193,6 +261,7 @@ export const cardDefinitions: CardDefinition[] = [
       },
     ],
     imagePath: "/cards/ocean_current_blessing.png",
+    groupId: "relief_higher_char",
   },
   {
     id: "big_harvest",
@@ -200,6 +269,7 @@ export const cardDefinitions: CardDefinition[] = [
     count: 1,
     baseGain: resource(2, 2, 2),
     imagePath: "/cards/big_harvest.png",
+    groupId: "power_events",
   },
   {
     id: "mercy",
@@ -207,6 +277,7 @@ export const cardDefinitions: CardDefinition[] = [
     count: 1,
     baseGain: resource(1, 1, 1),
     imagePath: "/cards/mercy.png",
+    groupId: "power_events",
   },
   {
     id: "scattered_food",
@@ -214,6 +285,7 @@ export const cardDefinitions: CardDefinition[] = [
     count: 1,
     baseGain: resource(1, 1, 1),
     imagePath: "/cards/scattered_food.png",
+    groupId: "power_events",
   },
   {
     id: "change_shift",
@@ -221,6 +293,7 @@ export const cardDefinitions: CardDefinition[] = [
     count: 1,
     baseGain: resource(1, 1, 1),
     imagePath: "/cards/change_shift.png",
+    groupId: "power_events",
   },
   {
     id: "begging",
@@ -228,6 +301,7 @@ export const cardDefinitions: CardDefinition[] = [
     count: 1,
     baseGain: resource(1, 1, 1),
     imagePath: "/cards/begging.png",
+    groupId: "power_events",
   },
   {
     id: "mysterious_spring",
@@ -236,6 +310,7 @@ export const cardDefinitions: CardDefinition[] = [
     baseGain: resource(0, 0, 0),
     extraActionCard: true,
     imagePath: "/cards/mysterious_spring.png",
+    groupId: "power_events",
   },
   {
     id: "everyone_favorite",
@@ -243,6 +318,7 @@ export const cardDefinitions: CardDefinition[] = [
     count: 1,
     baseGain: resource(0, 0, 0),
     imagePath: "/cards/everyone_favorite.png",
+    groupId: "power_events",
   },
   {
     id: "go_again_fruit",
@@ -251,6 +327,7 @@ export const cardDefinitions: CardDefinition[] = [
     baseGain: resource(1, 0, 0),
     isGoAgain: true,
     imagePath: "/cards/go_again_fruit.png",
+    groupId: "go_again",
   },
   {
     id: "go_again_meat",
@@ -259,6 +336,7 @@ export const cardDefinitions: CardDefinition[] = [
     baseGain: resource(0, 1, 0),
     isGoAgain: true,
     imagePath: "/cards/go_again_meat.png",
+    groupId: "go_again",
   },
   {
     id: "go_again_fish",
@@ -267,6 +345,7 @@ export const cardDefinitions: CardDefinition[] = [
     baseGain: resource(0, 0, 1),
     isGoAgain: true,
     imagePath: "/cards/go_again_fish.png",
+    groupId: "go_again",
   },
   {
     id: "season_change",
@@ -274,6 +353,7 @@ export const cardDefinitions: CardDefinition[] = [
     count: 1,
     baseGain: resource(0, 0, 0),
     imagePath: "/cards/season_change.png",
+    groupId: "reset",
   },
 ];
 
@@ -282,3 +362,36 @@ export const createInitialDeckState = (): DeckState =>
     acc[card.id] = card.count;
     return acc;
   }, {} as DeckState);
+
+export const createInstanceId = (cardId: CardId, index: number): CardInstanceId =>
+  `${cardId}__${index}` as CardInstanceId;
+
+export const createInitialInstanceState = (): CardInstanceState => {
+  const state = {} as CardInstanceState;
+  for (const card of cardDefinitions) {
+    for (let i = 0; i < card.count; i += 1) {
+      state[createInstanceId(card.id, i)] = true;
+    }
+  }
+  return state;
+};
+
+export const deriveDeckStateFromInstances = (
+  instanceState: CardInstanceState,
+): DeckState => {
+  const deckState = cardDefinitions.reduce<DeckState>((acc, card) => {
+    acc[card.id] = 0;
+    return acc;
+  }, {} as DeckState);
+
+  for (const card of cardDefinitions) {
+    for (let i = 0; i < card.count; i += 1) {
+      const instanceId = createInstanceId(card.id, i);
+      if (instanceState[instanceId]) {
+        deckState[card.id] += 1;
+      }
+    }
+  }
+
+  return deckState;
+};

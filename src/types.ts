@@ -38,6 +38,23 @@ export type CardId =
   | "go_again_fish"
   | "season_change";
 
+export type CardGroupId =
+  | "general_gather"
+  | "general_overhunt"
+  | "item_discovery"
+  | "mono_resource"
+  | "relief_min_char"
+  | "relief_higher_char"
+  | "power_events"
+  | "go_again"
+  | "reset";
+
+export type CardGroup = {
+  id: CardGroupId;
+  title: string;
+  description?: string;
+};
+
 export type CardDefinition = {
   id: CardId;
   name: string;
@@ -51,6 +68,7 @@ export type CardDefinition = {
   extraActionCard?: boolean;
   isGoAgain?: boolean;
   imagePath: string;
+  groupId: CardGroupId;
 };
 
 export type ConditionsState = {
@@ -60,3 +78,7 @@ export type ConditionsState = {
 };
 
 export type DeckState = Record<CardId, number>;
+
+export type CardInstanceId = `${CardId}__${number}`;
+
+export type CardInstanceState = Record<CardInstanceId, boolean>;

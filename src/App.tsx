@@ -4,9 +4,14 @@ import styles from "./App.module.css";
 import { CardGrid } from "./components/CardGrid";
 import { ConditionPanel } from "./components/ConditionPanel";
 import { StatsPanel } from "./components/StatsPanel";
-import { cardDefinitions, createInitialDeckState } from "./data/cardDefinitions";
+import {
+  cardDefinitions,
+  cardGroups,
+  createInitialInstanceState,
+  deriveDeckStateFromInstances,
+} from "./data/cardDefinitions";
 import { calculateStats } from "./utils/calculateStats";
-import type { CardId, ConditionsState, DeckState } from "./types";
+import type { CardInstanceId, CardInstanceState, ConditionsState } from "./types";
 
 const initialConditions: ConditionsState = {
   hasHigherCharRoomPlayer: false,
@@ -14,44 +19,26 @@ const initialConditions: ConditionsState = {
   distinctPreferences: 1,
 };
 
-const cardMaxById = cardDefinitions.reduce<Record<CardId, number>>(
-  (acc, card) => {
-    acc[card.id] = card.count;
-    return acc;
-  },
-  {} as Record<CardId, number>,
-);
-
-const clamp = (value: number, min: number, max: number): number =>
-  Math.min(max, Math.max(min, value));
-
 export const App = () => {
   const [conditions, setConditions] = useState<ConditionsState>(initialConditions);
-  const [deckState, setDeckState] = useState<DeckState>(() => createInitialDeckState());
+  const [instanceState, setInstanceState] = useState<CardInstanceState>(() =>
+    createInitialInstanceState(),
+  );
+  const deckState = useMemo(
+    () => deriveDeckStateFromInstances(instanceState),
+    [instanceState],
+  );
 
   const stats = useMemo(
     () => calculateStats(deckState, conditions, cardDefinitions),
     [deckState, conditions],
   );
 
-  const handleDraw = (cardId: CardId) => {
-    setDeckState((prev) => {
-      const remaining = prev[cardId];
-      if (!remaining) return prev;
-      return { ...prev, [cardId]: remaining - 1 };
-    });
-  };
-
-  const handleAdjust = (cardId: CardId, delta: number) => {
-    setDeckState((prev) => {
-      const current = prev[cardId];
-      const max = cardMaxById[cardId] ?? 0;
-      const next = clamp(current + delta, 0, max);
-      if (next === current) {
-        return prev;
-      }
-      return { ...prev, [cardId]: next };
-    });
+  const handleToggleInstance = (instanceId: CardInstanceId) => {
+    setInstanceState((prev) => ({
+      ...prev,
+      [instanceId]: !prev[instanceId],
+    }));
   };
 
   const handleConditionChange = (update: Partial<ConditionsState>) => {
@@ -59,7 +46,7 @@ export const App = () => {
   };
 
   const handleResetDeck = () => {
-    setDeckState(createInitialDeckState());
+    setInstanceState(createInitialInstanceState());
   };
 
   return (
@@ -70,7 +57,7 @@ export const App = () => {
             <p className={styles.tag}>React + TypeScript / CSS Modules</p>
             <h1>カードカウンティングツール</h1>
             <p className={styles.lead}>
-              山札の残り構成を追跡し、次の1枚で得られる資源期待値や各種確率をリアルタイム表示します。
+              山札の残り構成を追跡し、次の1枚で得られる資源期待値や各種確率をリアルタイム表示します。各カード画像を点灯/消灯させて残り枚数を管理してください。
             </p>
           </div>
           <div className={styles.summaryRow}>
@@ -86,9 +73,9 @@ export const App = () => {
         <div className={styles.layout}>
           <CardGrid
             cards={cardDefinitions}
-            deckState={deckState}
-            onDraw={handleDraw}
-            onAdjust={handleAdjust}
+            groups={cardGroups}
+            instanceState={instanceState}
+            onToggle={handleToggleInstance}
           />
           <div className={styles.panelStack}>
             <ConditionPanel conditions={conditions} onChange={handleConditionChange} />
@@ -97,7 +84,7 @@ export const App = () => {
         </div>
         <footer className={styles.footer}>
           <p>
-            画像はプレースホルダー表示です。最適な結果を得るにはゲーム中にカードをクリックして引いた枚数を反映させてください。
+            画像はプレースホルダー表示です。1 枚 1 枚をクリックして ON（明るい）/OFF（暗い）を切り替え、引いたカードを即座に反映させてください。
             条件チェックボックスは「季節の変わり目」のリセットでは保持されます。
           </p>
           <div className={styles.footerLinks}>
