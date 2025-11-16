@@ -12,6 +12,12 @@ const resourceLabels = {
   fish: "魚",
 } as const;
 
+const resourceColors: Record<keyof typeof resourceLabels, string> = {
+  fruit: "#22c55e",
+  meat: "#ef4444",
+  fish: "#3b82f6",
+};
+
 const thresholds = [
   { key: 1, label: "1 枚以上" },
   { key: 2, label: "2 枚以上" },
@@ -33,12 +39,19 @@ export const StatsPanel = ({ stats }: StatsPanelProps) => {
       <div className={styles.statGroup}>
         <h3>次の 1 枚で獲得できる期待値</h3>
         <div className={styles.expectationGrid}>
-          {Object.entries(resourceLabels).map(([key, label]) => (
-            <div key={key} className={styles.expectationItem}>
-              <span>{label}</span>
-              <strong>{formatResourceValue(stats.expectationFinal[key as keyof typeof resourceLabels])}</strong>
-            </div>
-          ))}
+          {(Object.entries(resourceLabels) as [keyof typeof resourceLabels, string][]).map(
+            ([key, label]) => {
+              const color = resourceColors[key];
+              return (
+                <div key={key} className={styles.expectationItem}>
+                  <span style={{ color }}>{label}</span>
+                  <strong style={{ color }}>
+                    {formatResourceValue(stats.expectationFinal[key])}
+                  </strong>
+                </div>
+              );
+            },
+          )}
         </div>
       </div>
       <div className={styles.statGroup}>
@@ -73,18 +86,18 @@ export const StatsPanel = ({ stats }: StatsPanelProps) => {
               </tr>
             </thead>
             <tbody>
-              {Object.entries(resourceLabels).map(([key, label]) => (
-                <tr key={key}>
-                  <td>{label}</td>
-                  {thresholds.map((threshold) => (
-                    <td key={threshold.key}>
-                      {formatPercentage(
-                        stats.resourceAtLeast[key as keyof typeof resourceLabels][threshold.key],
-                      )}
-                    </td>
-                  ))}
-                </tr>
-              ))}
+              {(Object.entries(resourceLabels) as [keyof typeof resourceLabels, string][]).map(
+                ([key, label]) => (
+                  <tr key={key}>
+                    <td style={{ color: resourceColors[key] }}>{label}</td>
+                    {thresholds.map((threshold) => (
+                      <td key={threshold.key}>
+                        {formatPercentage(stats.resourceAtLeast[key][threshold.key])}
+                      </td>
+                    ))}
+                  </tr>
+                ),
+              )}
             </tbody>
           </table>
         </div>

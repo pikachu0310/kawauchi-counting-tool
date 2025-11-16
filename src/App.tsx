@@ -16,7 +16,11 @@ import type { CardInstanceId, CardInstanceState, ConditionsState } from "./types
 const initialConditions: ConditionsState = {
   hasHigherCharRoomPlayer: false,
   isMinCharPlayer: false,
-  distinctPreferences: 1,
+  favoriteSelection: {
+    fruit: true,
+    meat: false,
+    fish: false,
+  },
 };
 
 export const App = () => {
@@ -53,22 +57,7 @@ export const App = () => {
     <div className={styles.app}>
       <main className={styles.main}>
         <header className={styles.header}>
-          <div>
-            <p className={styles.tag}>React + TypeScript / CSS Modules</p>
-            <h1>カードカウンティングツール</h1>
-            <p className={styles.lead}>
-              山札の残り構成を追跡し、次の1枚で得られる資源期待値や各種確率をリアルタイム表示します。色付きカードボタンを点灯/消灯させて残り枚数を管理してください。
-            </p>
-          </div>
-          <div className={styles.summaryRow}>
-            <div className={styles.counterCard}>
-              <p>デッキ残り枚数</p>
-              <strong>{stats.totalCards}</strong>
-            </div>
-            <button type="button" className={styles.resetButton} onClick={handleResetDeck}>
-              季節の変わり目（カウンティングリセット）
-            </button>
-          </div>
+          <h1>かわうち カウンティングツール</h1>
         </header>
         <div className={styles.layout}>
           <CardGrid
@@ -78,19 +67,23 @@ export const App = () => {
             onToggle={handleToggleInstance}
           />
           <div className={styles.panelStack}>
+            <section className={styles.summaryCard}>
+              <div>
+                <p className={styles.summaryLabel}>デッキ残り枚数</p>
+                <strong className={styles.summaryValue}>{stats.totalCards}</strong>
+              </div>
+              <button type="button" className={styles.summaryButton} onClick={handleResetDeck}>
+                季節の変わり目（リセット）
+              </button>
+            </section>
             <ConditionPanel conditions={conditions} onChange={handleConditionChange} />
             <StatsPanel stats={stats} />
           </div>
         </div>
         <footer className={styles.footer}>
           <p>
-            1 枚ごとに色分けしたボタンをクリックして ON（明るい）/OFF（暗い）を切り替えれば、引いたカードを即座に反映できます。
-            条件チェックボックスは「季節の変わり目」のリセットでは保持されます。
+            色付きカードをタップして残り枚数を調整し、右側で条件と確率を確認してください。季節の変わり目は強力イベント欄のボタンからリセットできます。
           </p>
-          <div className={styles.footerLinks}>
-            <span>手順: npm install → npm run dev</span>
-            <span>スタイル: CSS Modules</span>
-          </div>
         </footer>
       </main>
     </div>

@@ -7,7 +7,11 @@ import { calculateStats } from "./calculateStats";
 const baseConditions = {
   hasHigherCharRoomPlayer: false,
   isMinCharPlayer: false,
-  distinctPreferences: 1 as const,
+  favoriteSelection: {
+    fruit: true,
+    meat: false,
+    fish: false,
+  },
 };
 
 const createEmptyDeck = (): DeckState =>

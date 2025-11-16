@@ -24,12 +24,11 @@ const scaleVector = (vec: ResourceVector, scalar: number): ResourceVector => ({
   fish: vec.fish * scalar,
 });
 
-const favoriteMap: Record<ConditionsState["distinctPreferences"], ResourceVector> =
-  {
-    1: { fruit: 2, meat: 0, fish: 0 },
-    2: { fruit: 2, meat: 2, fish: 0 },
-    3: { fruit: 2, meat: 2, fish: 2 },
-  };
+const buildFavoriteVector = (selection: ConditionsState["favoriteSelection"]): ResourceVector => ({
+  fruit: selection.fruit ? 2 : 0,
+  meat: selection.meat ? 2 : 0,
+  fish: selection.fish ? 2 : 0,
+});
 
 const conditionSatisfied = (
   condition: NonNullable<CardDefinition["conditionalGain"]>[number]["condition"],
@@ -51,7 +50,7 @@ const computeImmediateGain = (
 ): ResourceVector => {
   const baseVector =
     card.id === "everyone_favorite"
-      ? favoriteMap[conditions.distinctPreferences]
+      ? buildFavoriteVector(conditions.favoriteSelection)
       : card.baseGain;
 
   let gain = { ...baseVector };

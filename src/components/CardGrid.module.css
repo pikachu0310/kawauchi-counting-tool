@@ -53,26 +53,23 @@
 .instanceGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-  gap: 0.6rem;
-}
-
-.instanceTile {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  align-items: center;
+  gap: 0.45rem;
 }
 
 .instanceButton {
   width: 100%;
-  height: 68px;
+  min-height: 74px;
   border: none;
-  border-radius: 16px;
+  border-radius: 15px;
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease, opacity 0.15s ease;
   color: #0f172a;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 0.35rem 0.4rem;
+  gap: 0.2rem;
 }
 
 .instanceButton:focus-visible {
@@ -90,23 +87,16 @@
   opacity: 0.5;
 }
 
-.instanceCaption {
-  margin: 0;
-  font-size: 0.75rem;
-  color: #d1d5db;
-  text-align: center;
-  line-height: 1.2;
+.buttonLabel {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: rgba(15, 23, 42, 0.92);
 }
 
-.visuallyHidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
+.buttonDesc {
+  display: block;
+  font-size: 0.68rem;
+  color: rgba(15, 23, 42, 0.72);
 }
 
 @media (max-width: 768px) {
@@ -115,6 +105,6 @@
   }
 
   .instanceButton {
-    height: 60px;
+    min-height: 64px;
   }
 }

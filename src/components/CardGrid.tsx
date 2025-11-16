@@ -24,19 +24,17 @@ type CardInstanceTileProps = {
 };
 
 const CardInstanceTile = ({ card, isActive, onToggle }: CardInstanceTileProps) => (
-  <div className={styles.instanceTile}>
-    <button
-      type="button"
-      className={`${styles.instanceButton} ${isActive ? styles.instanceActive : styles.instanceInactive}`}
-      style={{ backgroundColor: card.color }}
-      onClick={onToggle}
-      aria-pressed={isActive}
-      aria-label={`${card.name} / ${isActive ? "山札に残す" : "引き済み"}`}
-    >
-      <span className={styles.visuallyHidden}>{card.name}</span>
-    </button>
-    <p className={styles.instanceCaption}>{card.shortDescription}</p>
-  </div>
+  <button
+    type="button"
+    className={`${styles.instanceButton} ${isActive ? styles.instanceActive : styles.instanceInactive}`}
+    style={{ backgroundColor: card.color }}
+    onClick={onToggle}
+    aria-pressed={isActive}
+    aria-label={`${card.name} / ${isActive ? "山札に残す" : "引き済み"}`}
+  >
+    <span className={styles.buttonLabel}>{card.name}</span>
+    <span className={styles.buttonDesc}>{card.shortDescription}</span>
+  </button>
 );
 
 export const CardGrid = ({ cards, groups, instanceState, onToggle }: CardGridProps) => {

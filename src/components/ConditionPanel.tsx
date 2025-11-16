@@ -1,4 +1,4 @@
-import type { ConditionsState } from "../types";
+import type { ConditionsState, ResourceType } from "../types";
 import styles from "./ConditionPanel.module.css";
 
 type ConditionPanelProps = {
@@ -6,13 +6,26 @@ type ConditionPanelProps = {
   onChange: (update: Partial<ConditionsState>) => void;
 };
 
+const favoriteLabels: Record<ResourceType, string> = {
+  fruit: "果物",
+  meat: "お肉",
+  fish: "魚",
+};
+
 export const ConditionPanel = ({ conditions, onChange }: ConditionPanelProps) => {
-  const handleCheckbox = (key: keyof Omit<ConditionsState, "distinctPreferences">) => {
+  const handleCheckbox = (
+    key: keyof Omit<ConditionsState, "favoriteSelection">,
+  ) => {
     onChange({ [key]: !conditions[key] } as Partial<ConditionsState>);
   };
 
-  const handlePreferenceChange = (value: 1 | 2 | 3) => {
-    onChange({ distinctPreferences: value });
+  const handleFavoriteToggle = (resource: ResourceType) => {
+    onChange({
+      favoriteSelection: {
+        ...conditions.favoriteSelection,
+        [resource]: !conditions.favoriteSelection[resource],
+      },
+    });
   };
 
   return (
@@ -37,24 +50,22 @@ export const ConditionPanel = ({ conditions, onChange }: ConditionPanelProps) =>
         </label>
       </div>
       <div className={styles.preferenceGroup}>
-        <p>みんなの大好物：好みの種類</p>
-        <div className={styles.radioRow}>
-          {[1, 2, 3].map((value) => (
-            <label key={value} className={styles.radioLabel}>
+        <p>みんなの大好物：チェックした食材ごとに +2</p>
+        <div className={styles.favoriteGrid}>
+          {(Object.keys(favoriteLabels) as ResourceType[]).map((resource) => (
+            <label key={resource} className={styles.favoriteItem}>
               <input
-                type="radio"
-                name="distinctPreferences"
-                value={value}
-                checked={conditions.distinctPreferences === value}
-                onChange={() => handlePreferenceChange(value as 1 | 2 | 3)}
+                type="checkbox"
+                checked={conditions.favoriteSelection[resource]}
+                onChange={() => handleFavoriteToggle(resource)}
               />
-              {value} 種類
+              {favoriteLabels[resource]}
             </label>
           ))}
         </div>
       </div>
       <p className={styles.hint}>
-        ※ 条件は「季節の変わり目」リセット後も維持されます。最小人数や格差状況が変わったら、ここで更新してください。
+        ※ 条件は「季節の変わり目」リセット後も維持されます。好みの食材も必要に応じて更新してください。
       </p>
     </section>
   );

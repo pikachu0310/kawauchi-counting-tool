@@ -46,8 +46,7 @@ export type CardGroupId =
   | "relief_min_char"
   | "relief_higher_char"
   | "power_events"
-  | "go_again"
-  | "reset";
+  | "go_again";
 
 export type CardGroup = {
   id: CardGroupId;
@@ -73,10 +72,12 @@ export type CardDefinition = {
   shortDescription: string;
 };
 
+export type FavoriteSelection = Record<ResourceType, boolean>;
+
 export type ConditionsState = {
   hasHigherCharRoomPlayer: boolean;
   isMinCharPlayer: boolean;
-  distinctPreferences: 1 | 2 | 3;
+  favoriteSelection: FavoriteSelection;
 };
 
 export type DeckState = Record<CardId, number>;

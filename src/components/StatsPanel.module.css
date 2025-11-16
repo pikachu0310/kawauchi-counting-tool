@@ -63,13 +63,11 @@
 }
 
 .expectationItem span {
-  color: #cbd5f5;
   font-size: 0.9rem;
 }
 
 .expectationItem strong {
   font-size: 1.35rem;
-  color: #facc15;
 }
 
 .specialGrid {

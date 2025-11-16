@@ -49,10 +49,6 @@ export const cardGroups: CardGroup[] = [
     id: "go_again",
     title: "やりなおしシリーズ",
   },
-  {
-    id: "reset",
-    title: "リセット",
-  },
 ];
 
 export const cardDefinitions: CardDefinition[] = [
@@ -327,7 +323,7 @@ export const cardDefinitions: CardDefinition[] = [
   },
   {
     id: "scattered_food",
-    name: "散らばる食糧",
+    name: "散らばる食料",
     count: 1,
     baseGain: resource(1, 1, 1),
     imagePath: "/cards/scattered_food.png",
@@ -374,7 +370,7 @@ export const cardDefinitions: CardDefinition[] = [
     imagePath: "/cards/everyone_favorite.png",
     groupId: "power_events",
     color: "#f9a8d4",
-    shortDescription: "好みの種類×2食料",
+    shortDescription: "選択食材ごとに+2",
   },
   {
     id: "go_again_fruit",
@@ -415,7 +411,7 @@ export const cardDefinitions: CardDefinition[] = [
     count: 1,
     baseGain: resource(0, 0, 0),
     imagePath: "/cards/season_change.png",
-    groupId: "reset",
+    groupId: "power_events",
     color: "#94a3b8",
     shortDescription: "カウンティングを初期化",
   },
