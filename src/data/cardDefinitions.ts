@@ -34,7 +34,7 @@ export const cardGroups: CardGroup[] = [
   },
   {
     id: "relief_higher_char",
-    title: "救済シリーズ: 格差条件",
+    title: "救済シリーズ: キャラ部屋合計格差条件",
   },
   {
     id: "power_events",
@@ -218,7 +218,7 @@ export const cardDefinitions: CardDefinition[] = [
     imagePath: "/cards/rescued_fish.png",
     groupId: "relief_min_char",
     color: "#10b981",
-    shortDescription: "果物/お肉+1 +最少でお魚+1",
+    shortDescription: "果物/お肉+1　　　　最少でお魚+1",
   },
   {
     id: "blessing_spring",
@@ -234,7 +234,7 @@ export const cardDefinitions: CardDefinition[] = [
     imagePath: "/cards/blessing_spring.png",
     groupId: "relief_min_char",
     color: "#67e8f9",
-    shortDescription: "果物/お魚+1 +最少でお肉+1",
+    shortDescription: "果物/お魚+1　　　　最少でお肉+1",
   },
   {
     id: "basket_with_hole",
@@ -250,7 +250,7 @@ export const cardDefinitions: CardDefinition[] = [
     imagePath: "/cards/basket_with_hole.png",
     groupId: "relief_min_char",
     color: "#bef264",
-    shortDescription: "お肉/お魚+1 +最少で果物+1",
+    shortDescription: "お肉/お魚+1　　　　最少で果物+1",
   },
   {
     id: "harvest_help",
@@ -266,7 +266,7 @@ export const cardDefinitions: CardDefinition[] = [
     imagePath: "/cards/harvest_help.png",
     groupId: "relief_higher_char",
     color: "#f59e0b",
-    shortDescription: "果物/お肉+1 +格差で果物+1",
+    shortDescription: "果物/お肉+1　　　　格差で果物+1",
   },
   {
     id: "animal_care",
@@ -282,7 +282,7 @@ export const cardDefinitions: CardDefinition[] = [
     imagePath: "/cards/animal_care.png",
     groupId: "relief_higher_char",
     color: "#f43f5e",
-    shortDescription: "お肉/お魚+1 +格差でお肉+1",
+    shortDescription: "お肉/お魚+1　　　　格差でお肉+1",
   },
   {
     id: "ocean_current_blessing",
@@ -298,7 +298,7 @@ export const cardDefinitions: CardDefinition[] = [
     imagePath: "/cards/ocean_current_blessing.png",
     groupId: "relief_higher_char",
     color: "#3b82f6",
-    shortDescription: "果物/お魚+1 +格差でお魚+1",
+    shortDescription: "果物/お魚+1　　　　格差でお魚+1",
   },
   {
     id: "big_harvest",
@@ -308,7 +308,7 @@ export const cardDefinitions: CardDefinition[] = [
     imagePath: "/cards/big_harvest.png",
     groupId: "power_events",
     color: "#fdd835",
-    shortDescription: "全資源+2",
+    shortDescription: "果物/お肉/お魚+2",
   },
   {
     id: "mercy",
@@ -328,7 +328,7 @@ export const cardDefinitions: CardDefinition[] = [
     imagePath: "/cards/scattered_food.png",
     groupId: "power_events",
     color: "#4ade80",
-    shortDescription: "果物/お肉/お魚+1（配布無視）",
+    shortDescription: "果物/お肉/お魚+1\n（2個左に移動）",
   },
   {
     id: "change_shift",

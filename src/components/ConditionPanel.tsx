@@ -50,7 +50,7 @@ export const ConditionPanel = ({ conditions, onChange }: ConditionPanelProps) =>
         </label>
       </div>
       <div className={styles.preferenceGroup}>
-        <p>みんなの大好物：チェックした食材ごとに +2</p>
+        <p>みんなの大好物: チェックした食材ごとに +2</p>
         <div className={styles.favoriteGrid}>
           {(Object.keys(favoriteLabels) as ResourceType[]).map((resource) => (
             <label key={resource} className={styles.favoriteItem}>

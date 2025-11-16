@@ -24,6 +24,15 @@
   font-size: clamp(1.8rem, 5vw, 2.6rem);
 }
 
+.brandLink {
+  color: #38bdf8;
+  text-decoration: none;
+}
+
+.brandLink:hover {
+  text-decoration: underline;
+}
+
 .layout {
   display: grid;
   grid-template-columns: minmax(0, 2.8fr) minmax(240px, 0.7fr);
@@ -85,6 +94,24 @@
   padding: 1rem;
   border: 1px solid rgba(148, 163, 184, 0.2);
   color: #cbd5f5;
+}
+
+.footerCredits {
+  margin: 0.4rem 0 0;
+  font-size: 0.85rem;
+  color: #94a3b8;
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.footerCredits a {
+  color: #38bdf8;
+  text-decoration: none;
+}
+
+.footerCredits a:hover {
+  text-decoration: underline;
 }
 
 @media (max-width: 1024px) {

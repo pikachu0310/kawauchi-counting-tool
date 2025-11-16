@@ -71,10 +71,6 @@ export const CardGrid = ({ cards, groups, instanceState, onToggle }: CardGridPro
 
   return (
     <section className={styles.section}>
-      <div className={styles.sectionHeader}>
-        <h2>カード ON / OFF</h2>
-        <p>色付きボタンをクリックして ON（明）/OFF（暗）を切り替えてください。</p>
-      </div>
       <div className={styles.groupStack}>
         {groups.map((group) => {
           const groupCards = cardsByGroup[group.id] ?? [];
