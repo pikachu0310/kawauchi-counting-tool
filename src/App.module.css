@@ -58,6 +58,81 @@
   color: #cbd5f5;
 }
 
+.footerExtra {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin: 0.8rem 0;
+}
+
+.footerExtra section {
+  background: rgba(15, 23, 42, 0.75);
+  border-radius: 14px;
+  padding: 0.9rem;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.footerExtra h3 {
+  margin: 0 0 0.4rem;
+  font-size: 0.95rem;
+  color: #e2e8f0;
+}
+
+.footerExpectationGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 0.6rem;
+}
+
+.footerExpectationItem {
+  background: rgba(30, 41, 59, 0.8);
+  border-radius: 12px;
+  padding: 0.6rem;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.footerExpectationItem span {
+  font-size: 0.85rem;
+}
+
+.footerExpectationItem strong {
+  font-size: 1.1rem;
+}
+
+.footerSpecialGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.6rem;
+}
+
+.footerSpecialGrid div {
+  background: rgba(30, 41, 59, 0.85);
+  border-radius: 10px;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.footerSpecialLabel {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #cbd5f5;
+}
+
+.footerSpecialGrid strong {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 1rem;
+  color: #f8fafc;
+}
+
+.footerSpecialGrid span {
+  font-size: 0.9rem;
+  color: #38bdf8;
+}
+
 .footerCredits {
   margin: 0.4rem 0 0;
   font-size: 0.85rem;

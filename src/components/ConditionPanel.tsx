@@ -37,7 +37,18 @@ export const ConditionPanel = ({
 
   return (
     <section className={styles.panel}>
-      <h2>卓の状況</h2>
+      <div className={styles.panelHeader}>
+        <h2>卓の状況</h2>
+        <div className={styles.summaryRow}>
+          <div className={styles.remaining}>
+            <p>残り枚数</p>
+            <strong>{remainingCards}</strong>
+          </div>
+          <button type="button" className={styles.resetButton} onClick={onReset}>
+            季節の変わり目
+          </button>
+        </div>
+      </div>
       <div className={styles.checkboxGroup}>
         <label>
           <input
@@ -70,15 +81,6 @@ export const ConditionPanel = ({
             </label>
           ))}
         </div>
-      </div>
-      <div className={styles.summaryRow}>
-        <div className={styles.remaining}>
-          <p>カード残り枚数</p>
-          <strong>{remainingCards}</strong>
-        </div>
-        <button type="button" className={styles.resetButton} onClick={onReset}>
-          季節の変わり目 (リセット)
-        </button>
       </div>
     </section>
   );

@@ -8,7 +8,15 @@
   gap: 0.8rem;
 }
 
-.panel h2 {
+.panelHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.panelHeader h2 {
   margin: 0;
   font-size: 1rem;
   letter-spacing: 0.02em;
@@ -61,7 +69,6 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  flex-wrap: wrap;
 }
 
 .remaining {

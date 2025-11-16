@@ -1,28 +1,11 @@
 import type { DeckComputationResult } from "../utils/calculateStats";
-import { formatPercentage, formatResourceValue } from "../utils/calculateStats";
+import { formatPercentage } from "../utils/calculateStats";
 import styles from "./StatsPanel.module.css";
+import { resourceColors, resourceLabels, thresholds } from "./statsConfig";
 
 type StatsPanelProps = {
   stats: DeckComputationResult;
 };
-
-const resourceLabels = {
-  fruit: "果物",
-  meat: "お肉",
-  fish: "お魚",
-} as const;
-
-const resourceColors: Record<keyof typeof resourceLabels, string> = {
-  fruit: "#22c55e",
-  meat: "#ef4444",
-  fish: "#3b82f6",
-};
-
-const thresholds = [
-  { key: 1, label: "1 枚以上" },
-  { key: 2, label: "2 枚以上" },
-  { key: 3, label: "3 枚以上" },
-] as const;
 
 export const StatsPanel = ({ stats }: StatsPanelProps) => {
   const isDeckEmpty = stats.totalCards === 0;
@@ -31,11 +14,6 @@ export const StatsPanel = ({ stats }: StatsPanelProps) => {
     <section className={styles.panel}>
       <div className={styles.panelHeader}>
         <h2>1探検で資源がx枚以上得られる確率</h2>
-        <div className={styles.remaining}>
-          <span>残り</span>
-          <span>{stats.totalCards}</span>
-          <span>枚</span>
-        </div>
       </div>
       {isDeckEmpty && (
         <p className={styles.warning}>デッキが空です。季節の変わり目でリセットしてください。</p>
@@ -65,45 +43,6 @@ export const StatsPanel = ({ stats }: StatsPanelProps) => {
             )}
           </tbody>
         </table>
-      </div>
-      <div className={styles.extraInfo}>
-        <section>
-          <h3>次の 1 枚で獲得できる期待値</h3>
-          <div className={styles.expectationGrid}>
-            {(Object.entries(resourceLabels) as [keyof typeof resourceLabels, string][]).map(
-              ([key, label]) => {
-                const color = resourceColors[key];
-                return (
-                  <div key={key} className={styles.expectationItem}>
-                    <span style={{ color }}>{label}</span>
-                    <strong style={{ color }}>
-                      {formatResourceValue(stats.expectationFinal[key])}
-                    </strong>
-                  </div>
-                );
-              },
-            )}
-          </div>
-        </section>
-        <section>
-          <h3>特殊カードの確率</h3>
-          <div className={styles.specialGrid}>
-            <div>
-              <p className={styles.specialLabel}>アイテムカード</p>
-              <strong>
-                {stats.itemCount} 枚 / {stats.totalCards} 枚
-              </strong>
-              <span>{formatPercentage(stats.itemProbability)}</span>
-            </div>
-            <div>
-              <p className={styles.specialLabel}>不思議な湧き水</p>
-              <strong>
-                {stats.extraActionCount} 枚 / {stats.totalCards} 枚
-              </strong>
-              <span>{formatPercentage(stats.extraActionProbability)}</span>
-            </div>
-          </div>
-        </section>
       </div>
     </section>
   );
